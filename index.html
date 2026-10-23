@@ -647,6 +647,14 @@ function handleRemote(msg){
   if(msg.type==="ping"){ /* ignore */ }
 }
 
+function renderWaitingList(){
+  const t = STATE.tournament;
+  const el = $("waitingTeams");
+  if(!el || !t) return;
+  el.innerHTML = (t.teams||[]).map(tm=>`<div class="teamchip" style="margin:4px 0">${tm.name}</div>`).join("");
+  const c = $("waitingTeamsCount");
+  if(c) c.textContent = (t.teamIds||[]).length;
+}
 function refreshUI(){
   updateFbStatus();
   const t = STATE.tournament;
