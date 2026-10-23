@@ -909,6 +909,7 @@ function runDraw(tid){
   t.drawAt = Date.now();
   t.status = "SORTEO EN PREPARACIÓN";
   audit(t,"Sorteo realizado", numGroups+" grupos");
+  generateGroupMatches(t.id);
   // animate
   show("draw");
   animateDraw(t, ()=>{
@@ -917,6 +918,7 @@ function runDraw(tid){
     broadcast({type:"state",tournamentId:t.id});
     refreshUI();
     toast("Sorteo completado");
+    show("groups");
   });
 }
 
@@ -952,6 +954,8 @@ function generateGroupMatches(tid){
   const t = DB.tournaments[tid];
   if(!t || !t.groups) return;
   if(t.groupMatches && t.groupMatches.length>0) return;
+  // Para 4 equipos o menos, no hay fase de grupos: va directo a eliminatorias
+  if((t.teamIds||[]).length <= 4) return;
   t.groupMatches = [];
   t.groups.forEach(g=>{
     const ids = g.teamIds;
@@ -1217,63 +1221,62 @@ function finishMatch(){
   $("resultWinner").textContent = winner ? ("Ganador: " + (t.teams.find(x=>x.id===winner)||{}).name) : "Empate";
   $("resultDetail").innerHTML = ids.map(tid=> (t.teams.find(x=>x.id===tid)||{}).name + ": " + scores[tid].correct + " aciertos").join("<br>");
   $("resultNext").onclick = ()=>{
-    // if knockout, advance
-    if(m.knockout){ advanceKnockoutAfterMatch(m, winner); }
-    else { show("standings"); refreshUI(); }
+    if(m.knockout){
+      show("bracket");
+      refreshUI();
+      // intentar avanzar a la siguiente partida
+      setTimeout(()=>{ advanceKnockout(STATE.tournament.id); }, 300);
+    } else { show("standings"); refreshUI(); }
   };
 }
 
 // ---------- Knockout generation ----------
 function generateKnockout(t){
   ensureStandings(t);
-  // classify teams from groups
-  // sort each group by standings; take qualifyPerGroup top
+  // classify teams
   const qualified = [];
-  if(t.groups && t.groups.length>0){
+  if(t.groups && t.groups.length>0 && t.groupMatches && t.groupMatches.some(m=>m.result)){
     t.groups.forEach(g=>{
-      const sorted = g.teamIds.map(tid=>({tid, s:t.standings[tid]})).sort((a,b)=> b.s.points-a.s.points || b.s.correct-a.s.correct);
+      const sorted = g.teamIds.map(tid=>({tid, s:t.standings[tid]||{points:0,correct:0}})).sort((a,b)=> b.s.points-a.s.points || b.s.correct-a.s.correct);
       const q = t.qualifyPerGroup || 2;
       sorted.slice(0,q).forEach(x=> qualified.push(x.tid));
     });
+  } else if(t.groups && t.groups.length>0){
+    // groups exist but not played: take all
+    t.groups.forEach(g=> g.teamIds.forEach(tid=>qualified.push(tid)));
   } else {
-    // no groups: rank all teams
-    const sorted = t.teamIds.map(tid=>({tid,s:t.standings[tid]})).sort((a,b)=>b.s.points-a.s.points);
-    sorted.forEach(x=>qualified.push(x.tid));
+    // no groups: all teams
+    t.teamIds.forEach(tid=>qualified.push(tid));
   }
-  // if need to reach power of 2, handle byes
-  // build rounds
-  t.knockout = { rounds: [], qualified };
-  // create first knockout round matches (round of 16/8/etc)
-  const roundSize = nextPow2(qualified.length);
-  const byes = roundSize - qualified.length;
-  // seeding: qualified in order; byes to top seeds
-  const seeds = [...qualified];
-  // pad with null byes at end? Simpler: top seeds get byes
-  const bracketTeams = [...seeds];
-  // create first round pairings: pair first with last etc.
-  const firstRound = [];
-  let i=0, j=bracketTeams.length-1;
-  // standard pairing
+  // dedup
+  const uniq = [...new Set(qualified)];
+  if(uniq.length===0){ toast("No hay equipos para el cuadro"); return; }
+  t.knockout = { rounds: [], qualified: uniq };
+  const roundSize = nextPow2(uniq.length);
+  const byes = roundSize - uniq.length;
+  const autoAdvance = uniq.slice(0, byes);
+  const rest = uniq.slice(byes);
   const pairs = [];
-  const arr = bracketTeams.slice();
-  // if byes, give to top seeds: remove top 'byes' teams as auto-advance
-  const autoAdvance = arr.slice(0, byes);
-  const rest = arr.slice(byes);
-  // pair rest
-  for(let k=0; k<rest.length/2; k++){
+  for(let k=0;k<rest.length/2;k++){
     pairs.push([rest[k], rest[rest.length-1-k]]);
   }
+  // round name based on size
+  let roundName;
+  if(uniq.length <= 2) roundName = "Final";
+  else if(uniq.length <= 4) roundName = "Semifinales";
+  else if(uniq.length <= 8) roundName = "Cuartos de final";
+  else if(uniq.length <= 16) roundName = "Octavos de final";
+  else roundName = "Ronda preliminar";
+  const firstRound = [];
   pairs.forEach((p, idx)=>{
-    firstRound.push(createKnockoutMatch(t, "Ronda preliminar", p, idx));
+    firstRound.push(createKnockoutMatch(t, roundName, p, idx));
   });
-  // auto-advance byes as virtual matches
   autoAdvance.forEach((tid, idx)=>{
     const m = createKnockoutMatch(t, "Pase libre", [tid, null], idx+1000);
     m.result = {scores:{[tid]:{points:0,correct:0,wrong:0}}, winner: tid};
     firstRound.unshift(m);
   });
-  t.knockout.rounds.push({name: firstRound.length>8?"Ronda preliminar":"Octavos", matches: firstRound});
-  // store
+  t.knockout.rounds.push({name: roundName, matches: firstRound});
   if(!t.matches) t.matches=[];
   t.matches.push(...firstRound);
   saveLocal();
@@ -1325,10 +1328,10 @@ $("advanceKnockout").addEventListener("click",()=>{ if(STATE.tournament) advance
 
 function advanceKnockout(tid){
   const t = DB.tournaments[tid];
-  if(!t || !t.knockout){ 
-    // generate if not exists
+  if(!t) return;
+  if(!t.knockout){ 
     generateKnockout(t);
-    return;
+    if(!t.knockout) return;
   }
   const kr = t.knockout;
   const lastRound = kr.rounds[kr.rounds.length-1];
