@@ -275,6 +275,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
           <p>Cierre: <span id="tClose">-</span></p>
           <h4>Inscripciones</h4>
           <div id="tRegList" style="max-height:260px;overflow:auto"></div>
+          <button class="btn ghost" id="refreshData" style="margin-bottom:8px">🔄 Refrescar datos</button>
           <button class="btn sec" id="runDraw">Ejecutar sorteo</button>
           <button class="btn sec" id="startGroupPhase">Iniciar fase de grupos</button>
           <button class="btn sec" id="advanceKnockout">Avanzar eliminatorias</button>
@@ -873,6 +874,7 @@ function closeRegistration(tid){
 $("closeReg").addEventListener("click",()=>{ if(STATE.tournament) closeRegistration(STATE.tournament.id); });
 
 $("runDraw").addEventListener("click",()=>{ if(STATE.tournament) runDraw(STATE.tournament.id); });
+$("refreshData").addEventListener("click",()=>{ pollTournament().then(()=>toast("Datos actualizados")); });
 
 function runDraw(tid){
   const t = DB.tournaments[tid];
@@ -1545,6 +1547,29 @@ try{
 updateHome();
 refreshUI();
 setInterval(refreshUI,2000);
+
+// Polling de respaldo para sincronizar entre dispositivos (Firestore)
+let _polling = false;
+async function pollTournament(){
+  if(!fbMode || !db || !STATE.tournamentId || _polling) return;
+  if(STATE.currentMatch) return; // no interrumpir un enfrentamiento
+  _polling = true;
+  try{
+    const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
+    if(snap.exists){
+      const data = snap.data();
+      const cur = STATE.tournament;
+      const changed = !cur || (data.teamIds||[]).length !== (cur.teamIds||[]).length || data.status !== cur.status || (data.groups||[]).length !== (cur.groups||[]).length;
+      if(changed){
+        DB.tournaments[STATE.tournamentId] = data;
+        STATE.tournament = data;
+        refreshUI();
+      }
+    }
+  }catch(e){ console.warn("poll err", e); }
+  finally{ _polling = false; }
+}
+setInterval(pollTournament, 3000);
 
 // expose for debugging
 window.COPA = {STATE,DB};
