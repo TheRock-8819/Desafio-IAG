@@ -792,7 +792,22 @@ function startWaitingCountdown(t){
     // status text
     const st = $("waitingStatus");
     if(st){
-      if(!t.registrationOpenAt) st.textContent="ESPERANDO INSCRIPCIONES";
+      if(t.activeMatch && t.activeMatch.status==="playing"){
+        st.textContent="PARTIDO EN CURSO";
+        // redirect to match screen
+        if(!STATE.currentMatch || STATE.currentMatch.id !== t.activeMatch.matchId){
+          const m = (t.matches||[]).find(x=>x.id===t.activeMatch.matchId);
+          if(m){
+            STATE.currentMatch = m;
+            STATE.currentQIndex = t.activeMatch.qIndex;
+            STATE.matchAnswers = m.answers || {};
+            (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
+            STATE.isDriver = (t.activeMatch.driverUid === (auth && auth.currentUser ? auth.currentUser.uid : null));
+            show("match");
+            renderMatchQuestion();
+          }
+        }
+      } else if(!t.registrationOpenAt) st.textContent="ESPERANDO INSCRIPCIONES";
       else if(remaining>120) st.textContent="INSCRIPCIÓN ABIERTA";
       else if(remaining>0) st.textContent="CIERRE INMINENTE";
       else st.textContent="INSCRIPCIÓN CERRADA";
@@ -1065,6 +1080,7 @@ window.playMatch = function(mid){
     STATE.currentQIndex = 0;
     STATE.matchAnswers = m.answers;
     (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
+    console.log("playMatch: setting activeMatch", t.activeMatch);
     saveLocal();
     show("match");
     renderMatchQuestion();
@@ -1710,6 +1726,7 @@ async function pollTournament(){
     const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
     if(snap.exists){
       const data = snap.data();
+      console.log("poll: activeMatch=", data.activeMatch, "teams=", (data.teamIds||[]).length);
       const cur = STATE.tournament;
       const changed = !cur || (data.teamIds||[]).length !== (cur.teamIds||[]).length || data.status !== cur.status || (data.groups||[]).length !== (cur.groups||[]).length || JSON.stringify(data.activeMatch) !== JSON.stringify(cur && cur.activeMatch);
       // handle active match transitions
