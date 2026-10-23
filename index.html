@@ -119,6 +119,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
     <h2>🏆 COPA CONTABLE 2026</h2>
     <p>Torneo educativo online de Sistema de Información Contable. Competí respondiendo preguntas teóricas y prácticas, acumulá puntos y llegá a la final.</p>
     <div id="homeStatus" class="notice">Estado del torneo: <strong id="homeEstado">Sin sala activa</strong></div>
+    <div class="small" id="fbStatus" style="margin:8px 0"></div>
     <div class="grid grid4">
       <div class="card"><div class="small">Equipos registrados</div><div class="big" id="homeTeams">0</div></div>
       <div class="card"><div class="small">Capacidad máxima</div><div class="big" id="homeCap">80</div></div>
@@ -342,12 +343,16 @@ const firebaseConfig = {
 const TEACHER_PASSWORD = "docente2026"; // cambiar en producción
 
 let firebaseApp=null, db=null, auth=null, fbMode=false;
+let authReady = Promise.resolve();
 try{
   if(FIREBASE_CONFIG && FIREBASE_CONFIG.apiKey){
     firebaseApp = firebase.initializeApp(FIREBASE_CONFIG);
     db = firebase.firestore();
     auth = firebase.auth();
     fbMode = true;
+    // Iniciar sesión anónima para cumplir las reglas de Firestore (request.auth != null)
+    authReady = auth.signInAnonymously().then(()=>{ console.log("FB auth OK", auth.currentUser && auth.currentUser.uid); }).catch(e=>{ console.warn("anon auth failed", e); fbMode=false; toast("Error de autenticación Firebase: "+e.message, 4000); });
+    auth.onAuthStateChanged(u=>{ console.log("auth state:", u && u.uid); updateFbStatus(); });
   }
 } catch(e){ console.warn("Firebase init failed", e); fbMode=false; }
 
@@ -586,12 +591,21 @@ function audit(t,action,detail=""){ t.audit.unshift({ts:Date.now(),action,detail
 
 function saveLocal(){
   try{ localStorage.setItem("copa_state", JSON.stringify({tournaments:DB.tournaments, last:STATE.tournamentId})); }catch(e){}
-  // Firebase sync (best-effort)
+  // Firebase sync
   if(fbMode && db && STATE.tournament){
     const t = DB.tournaments[STATE.tournament.id] || STATE.tournament;
-    try{
-      db.collection("tournaments").doc(t.id).set(JSON.parse(JSON.stringify(t))).catch(e=>console.warn("fb save",e));
-    }catch(e){ console.warn("fb save",e); }
+    const doSave = async ()=>{
+      try{
+        await authReady;
+        if(auth && !auth.currentUser){ await auth.signInAnonymously(); }
+        await db.collection("tournaments").doc(t.id).set(JSON.parse(JSON.stringify(t)));
+        console.log("FB saved", t.id);
+      }catch(e){
+        console.error("fb save failed", e);
+        toast("Error al guardar en Firebase: "+e.message, 4000);
+      }
+    };
+    doSave();
   }
 }
 function fbSubscribe(tid){
@@ -602,8 +616,10 @@ function fbSubscribe(tid){
         const data = snap.data();
         DB.tournaments[tid] = data;
         if(STATE.tournamentId===tid){ STATE.tournament = data; refreshUI(); }
+      } else {
+        console.warn("FB doc not found", tid);
       }
-    });
+    }, err=>{ console.error("fb sub error", err); toast("Error de sincronización: "+err.message, 4000); });
   }catch(e){ console.warn("fb sub",e); }
 }
 function loadLocal(){
@@ -631,6 +647,7 @@ function handleRemote(msg){
 }
 
 function refreshUI(){
+  updateFbStatus();
   const t = STATE.tournament;
   if(!t){ updateHome(); return; }
   $("homeEstado").textContent = t.status;
@@ -647,6 +664,16 @@ function refreshUI(){
   updateCountdown();
 }
 
+function updateFbStatus(){
+  const el = $("fbStatus");
+  if(!el) return;
+  if(fbMode){
+    const uid = (auth && auth.currentUser) ? auth.currentUser.uid : "sin sesión";
+    el.innerHTML = '<span class="badge b-green">Firebase conectado</span> <span class="small">('+uid+')</span>';
+  } else {
+    el.innerHTML = '<span class="badge b-red">Modo demo (sin Firebase)</span>';
+  }
+}
 function updateHome(){
   const t = STATE.tournament;
   if(!t){
