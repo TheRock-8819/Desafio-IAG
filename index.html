@@ -607,8 +607,9 @@ function saveLocal(){
         toast("Error al guardar en Firebase: "+e.message, 4000);
       }
     };
-    doSave();
+    return doSave();
   }
+  return Promise.resolve();
 }
 async function saveAnswer(teamId, qIndex, ans){
   if(!fbMode || !db || !STATE.tournamentId) return;
@@ -633,6 +634,7 @@ function fbSubscribe(tid){
     db.collection("tournaments").doc(tid).onSnapshot(snap=>{
       if(snap.exists){
         const data = snap.data();
+        console.log("onSnapshot fired, teams:", (data.teamIds||[]).length, "activeMatch:", data.activeMatch && data.activeMatch.status);
         DB.tournaments[tid] = data;
         if(STATE.tournamentId===tid){ STATE.tournament = data; refreshUI(); }
       } else {
@@ -1067,7 +1069,7 @@ function renderGroupsView(){
     return `<div class="card"><h3>${g.name}</h3><p class="small">${names}</p>${mhtml}</div>`;
   }).join("");
 }
-window.playMatch = function(mid){
+window.playMatch = async function(mid){
   const t = STATE.tournament;
   if(!t) return;
   const m = (t.groupMatches||[]).concat(t.matches||[]).find(x=>x.id===mid);
@@ -1081,7 +1083,7 @@ window.playMatch = function(mid){
     STATE.matchAnswers = m.answers;
     (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
     console.log("playMatch: setting activeMatch", t.activeMatch);
-    saveLocal();
+    await saveLocal();
     show("match");
     renderMatchQuestion();
     startMatchTimer(t.qTime||60);
@@ -1728,7 +1730,16 @@ async function pollTournament(){
       const data = snap.data();
       console.log("poll: activeMatch=", data.activeMatch, "teams=", (data.teamIds||[]).length);
       const cur = STATE.tournament;
+      // Ignorar actualizaciones obsoletas (menos equipos que el estado actual)
+      if(cur && (data.teamIds||[]).length < (cur.teamIds||[]).length){
+        console.log("poll: stale doc ignored (fewer teams)");
+        _polling = false;
+        return;
+      }
       const changed = !cur || (data.teamIds||[]).length !== (cur.teamIds||[]).length || data.status !== cur.status || (data.groups||[]).length !== (cur.groups||[]).length || JSON.stringify(data.activeMatch) !== JSON.stringify(cur && cur.activeMatch);
+      if(changed && cur && (data.teamIds||[]).length > (cur.teamIds||[]).length){
+        toast("Nuevo equipo registrado: " + ((data.teams||[]).slice(-1)[0]||{}).name, 3000);
+      }
       // handle active match transitions
       const am = data.activeMatch;
       if(am && am.status === "playing"){
@@ -1770,7 +1781,7 @@ async function pollTournament(){
   }catch(e){ console.warn("poll err", e); }
   finally{ _polling = false; }
 }
-setInterval(pollTournament, 3000);
+setInterval(pollTournament, 5000);
 
 // expose for debugging
 window.COPA = {STATE,DB};
