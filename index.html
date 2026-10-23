@@ -920,7 +920,12 @@ function runDraw(tid){
     broadcast({type:"state",tournamentId:t.id});
     refreshUI();
     toast("Sorteo completado");
-    show("groups");
+    if((t.teamIds||[]).length <= 4){
+      // Eliminación directa: generar cuadro y mostrar bracket
+      generateKnockout(t);
+    } else {
+      show("groups");
+    }
   });
 }
 
@@ -1390,7 +1395,8 @@ function renderBracketView(){
       const n0 = m.teamNames[0]||"-";
       const n1 = m.teamNames[1]||"-";
       const res = m.result ? ` → ${ (t.teams.find(x=>x.id===m.result.winner)||{}).name || m.result.winner }` : "";
-      return `<div class="matchcard"><span class="teamchip ${m.result&&m.result.winner===m.teamIds[0]?'winner':''}">${n0}</span><span>vs</span><span class="teamchip ${m.result&&m.result.winner===m.result.winner&&m.result.winner===m.teamIds[1]?'winner':''}">${n1}</span><span class="small">${res}</span></div>`;
+      const playBtn = m.result ? "" : `<button class="btn" style="padding:6px 10px" onclick="playMatch('${m.id}')">Jugar</button>`;
+      return `<div class="matchcard"><span class="teamchip ${m.result&&m.result.winner===m.teamIds[0]?'winner':''}">${n0}</span><span>vs</span><span class="teamchip ${m.result&&m.result.winner===m.teamIds[1]?'winner':''}">${n1}</span><span class="small">${res}</span>${playBtn}</div>`;
     }).join("") + `</div>`;
   }).join("");
   if(t.champion){ showPodium(t); }
