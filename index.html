@@ -339,6 +339,7 @@ const firebaseConfig = {
   appId: "1:248667054622:web:c808c95352dc3d2a62840f",
   measurementId: "G-ZH4E14NGXJ"
 }; // {apiKey,authDomain,projectId,...}
+const FIREBASE_CONFIG = (typeof firebaseConfig !== "undefined") ? firebaseConfig : (window.FIREBASE_CONFIG || null);
 // Para configurar: window.FIREBASE_CONFIG = {...} antes de cargar, o editar aquí.
 const TEACHER_PASSWORD = "docente2026"; // cambiar en producción
 
