@@ -610,6 +610,23 @@ function saveLocal(){
     doSave();
   }
 }
+async function saveAnswer(teamId, qIndex, ans){
+  if(!fbMode || !db || !STATE.tournamentId) return;
+  try{
+    await authReady;
+    const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
+    if(!snap.exists) return;
+    const data = snap.data();
+    const m = (data.matches||[]).find(x=>x.id===STATE.currentMatch.id);
+    if(!m) return;
+    if(!m.answers) m.answers={};
+    if(!m.answers[teamId]) m.answers[teamId]=[];
+    m.answers[teamId][qIndex] = ans;
+    const idx = data.matches.findIndex(x=>x.id===m.id);
+    if(idx>=0) data.matches[idx]=m;
+    await db.collection("tournaments").doc(STATE.tournamentId).set(data);
+  }catch(e){ console.warn("saveAnswer err", e); }
+}
 function fbSubscribe(tid){
   if(!fbMode || !db) return;
   try{
@@ -980,6 +997,7 @@ function generateGroupMatches(tid){
           questions: qs,
           knockout: false,
           status: "pending",
+          answers: {},
         };
         t.groupMatches.push(m);
       }
@@ -1039,7 +1057,21 @@ window.playMatch = function(mid){
   if(!t) return;
   const m = (t.groupMatches||[]).concat(t.matches||[]).find(x=>x.id===mid);
   if(!m) return;
-  startMatch(m);
+  if(fbMode){
+    STATE.isDriver = true;
+    if(!m.answers) m.answers = {};
+    t.activeMatch = { matchId: m.id, qIndex: 0, startedAt: Date.now(), timePerQ: t.qTime||60, driverUid: (auth && auth.currentUser) ? auth.currentUser.uid : null, status: "playing" };
+    STATE.currentMatch = m;
+    STATE.currentQIndex = 0;
+    STATE.matchAnswers = m.answers;
+    (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
+    saveLocal();
+    show("match");
+    renderMatchQuestion();
+    startMatchTimer(t.qTime||60);
+  } else {
+    startMatch(m);
+  }
 };
 
 // ---------- Match engine ----------
@@ -1056,6 +1088,8 @@ function renderMatchQuestion(){
   const m = STATE.currentMatch;
   const t = STATE.tournament;
   if(!m) return;
+  STATE.matchLocked = false;
+  STATE.selectedAnswer = null;
   const qi = STATE.currentQIndex;
   const qList = m.questions || [];
   if(qi >= qList.length){
@@ -1068,6 +1102,7 @@ function renderMatchQuestion(){
   $("matchTeams").textContent = (m.teamNames||[]).join(" vs ");
   $("matchProgress").textContent = `Pregunta ${qi+1}/${qList.length}`;
   const oldBtn = $("matchNextBtn"); if(oldBtn) oldBtn.remove();
+  const oldWait = $("matchWaitMsg"); if(oldWait) oldWait.remove();
   $("matchQ").textContent = q.text;
   $("matchScenario").textContent = q.topic ? ("Tema: "+q.topic+" · "+q.difficulty) : "";
   const opts = $("matchOpts");
@@ -1119,12 +1154,14 @@ function handleMatchSubmit(timeUp){
   const m = STATE.currentMatch;
   const q = m.questions[STATE.currentQIndex];
   const ans = timeUp ? null : STATE.selectedAnswer;
-  // record for current team (the viewer's team). In demo, we simulate both teams? 
-  // For simplicity, demo records only current user's team; teacher can simulate opponent.
   const teamId = STATE.team ? STATE.team.id : (m.teamIds[0]);
   if(!STATE.matchAnswers[teamId]) STATE.matchAnswers[teamId]=[];
   STATE.matchAnswers[teamId][STATE.currentQIndex] = ans;
-  // evaluate
+  // save answer to doc in fbMode (merge to avoid clobbering)
+  if(fbMode && STATE.tournament){
+    saveAnswer(teamId, STATE.currentQIndex, ans);
+  }
+  // evaluate (local feedback)
   const correct = ans !== null && ans === q.correct;
   const fb = $("matchFeedback");
   fb.classList.remove("hide");
@@ -1135,31 +1172,132 @@ function handleMatchSubmit(timeUp){
   } else {
     fb.className="feedback bad"; fb.textContent="Incorrecto. "+q.explanation;
   }
-  // disable options
   [...$("matchOpts").children].forEach((b,i)=>{
     b.disabled=true;
     if(i===q.correct) b.classList.add("correct");
     else if(i===STATE.selectedAnswer) b.classList.add("wrong");
   });
   $("matchSubmit").disabled=true;
-  // next button
-  let nb = $("matchNextBtn");
-  if(!nb){
-    nb = document.createElement("button");
-    nb.id="matchNextBtn"; nb.className="btn"; nb.textContent="Siguiente pregunta →";
-    nb.addEventListener("click",()=>{
-      nb.remove();
-      STATE.currentQIndex++;
-      renderMatchQuestion();
-    });
-    $("match").querySelector(".card").appendChild(nb);
+  // next button: only driver advances in fbMode
+  const isDriver = !fbMode || STATE.isDriver;
+  if(isDriver){
+    let nb = $("matchNextBtn");
+    if(!nb){
+      nb = document.createElement("button");
+      nb.id="matchNextBtn"; nb.className="btn"; nb.textContent="Siguiente pregunta →";
+      nb.addEventListener("click",()=>{
+        nb.remove();
+        advanceMatchQuestion();
+      });
+      $("match").querySelector(".card").appendChild(nb);
+    }
+    nb.textContent = (STATE.currentQIndex === m.questions.length-1) ? "Ver resultado →" : "Siguiente pregunta →";
+  } else {
+    // non-driver: show waiting message
+    let w = $("matchWaitMsg");
+    if(!w){ w = document.createElement("p"); w.id="matchWaitMsg"; w.className="small"; w.style.textAlign="center"; w.textContent="Esperando al docente para la siguiente pregunta..."; $("match").querySelector(".card").appendChild(w); }
   }
-  nb.textContent = (STATE.currentQIndex === m.questions.length-1) ? "Ver resultado →" : "Siguiente pregunta →";
+}
+
+async function advanceMatchQuestion(){
+  const m = STATE.currentMatch;
+  const t = STATE.tournament;
+  const last = STATE.currentQIndex === m.questions.length-1;
+  if(fbMode){
+    if(last){
+      if(STATE.isDriver){
+        // merge answers from latest doc
+        try{
+          const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
+          if(snap.exists){ const d=snap.data(); const mm=(d.matches||[]).find(x=>x.id===m.id); if(mm && mm.answers){ m.answers=mm.answers; STATE.matchAnswers=mm.answers; } }
+        }catch(e){}
+        finishMatchShared();
+      }
+    } else {
+      const newQ = STATE.currentQIndex + 1;
+      // merge answers from latest doc
+      try{
+        const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
+        if(snap.exists){ const d=snap.data(); const mm=(d.matches||[]).find(x=>x.id===m.id); if(mm && mm.answers){ m.answers=mm.answers; STATE.matchAnswers=mm.answers; } if(d.activeMatch){ t.activeMatch=d.activeMatch; } }
+      }catch(e){}
+      if(t.activeMatch){ t.activeMatch.qIndex = newQ; t.activeMatch.startedAt = Date.now(); }
+      STATE.currentQIndex = newQ;
+      m.answers = STATE.matchAnswers;
+      saveLocal();
+      renderMatchQuestion();
+      startMatchTimer(t.qTime||60);
+    }
+  } else {
+    if(last){ finishMatch(); }
+    else { STATE.currentQIndex++; renderMatchQuestion(); }
+  }
+}
+
+function finishMatchShared(){
+  const m = STATE.currentMatch;
+  const t = STATE.tournament;
+  // use match.answers from doc if available
+  if(m.answers) STATE.matchAnswers = m.answers;
+  // compute scores
+  const scores = {};
+  (m.teamIds||[]).forEach(tid=>{
+    let pts=0, correct=0, wrong=0;
+    const ans = STATE.matchAnswers[tid] || [];
+    m.questions.forEach((q,i)=>{
+      const a = ans[i];
+      if(a === null || a === undefined){}
+      else if(a === q.correct){ pts += (q.points||3); correct++; }
+      else { wrong++; }
+    });
+    scores[tid] = {points:pts, correct, wrong};
+  });
+  const ids = m.teamIds;
+  let winner = null;
+  if(ids.length>=2){
+    if(scores[ids[0]].points > scores[ids[1]].points) winner=ids[0];
+    else if(scores[ids[1]].points > scores[ids[0]].points) winner=ids[1];
+    else {
+      if(scores[ids[0]].correct > scores[ids[1]].correct) winner=ids[0];
+      else if(scores[ids[1]].correct > scores[ids[0]].correct) winner=ids[1];
+      else winner = ids[0];
+    }
+  }
+  m.result = {scores, winner};
+  ensureStandings(t);
+  ids.forEach(tid=>{
+    const s = t.standings[tid];
+    const sc = scores[tid];
+    s.played++;
+    s.correct += sc.correct;
+    s.wrong += sc.wrong;
+    if(winner === tid){ s.won++; s.points += 3; }
+    else if(winner === null){ s.draw++; s.points += 1; }
+    else { s.lost++; }
+  });
+  t.activeMatch = { matchId: m.id, qIndex: 0, status: "finished" };
+  if(!t.matches) t.matches=[];
+  if(!t.matches.find(x=>x.id===m.id)) t.matches.push(m);
+  // update the match in t.matches
+  const idx = t.matches.findIndex(x=>x.id===m.id);
+  if(idx>=0) t.matches[idx] = m;
+  audit(t, "Enfrentamiento finalizado", (m.teamNames||[]).join(" vs "));
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  // show result
+  show("result");
+  $("resultScore").textContent = `${scores[ids[0]].points} - ${scores[ids[1]].points}`;
+  $("resultWinner").textContent = winner ? ("Ganador: " + (t.teams.find(x=>x.id===winner)||{}).name) : "Empate";
+  $("resultDetail").innerHTML = ids.map(tid=> (t.teams.find(x=>x.id===tid)||{}).name + ": " + scores[tid].correct + " aciertos").join("<br>");
+  $("resultNext").onclick = ()=>{
+    t.activeMatch = null;
+    saveLocal();
+    show("bracket");
+    refreshUI();
+    setTimeout(()=>{ advanceKnockout(t.id); }, 300);
+  };
 }
 
 function finishMatch(){
-  const m = STATE.currentMatch;
-  const t = STATE.tournament;
   // simulate opponent answers if missing (demo mode)
   (m.teamIds||[]).forEach(tid=>{
     if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[];
@@ -1308,6 +1446,7 @@ function createKnockoutMatch(t, roundName, teamPair, idx){
     questions: qs,
     knockout: true,
     status: "pending",
+    answers: {},
   };
   // if bye (one team null), auto win
   if(teamPair[1] === null){
@@ -1565,7 +1704,39 @@ async function pollTournament(){
     if(snap.exists){
       const data = snap.data();
       const cur = STATE.tournament;
-      const changed = !cur || (data.teamIds||[]).length !== (cur.teamIds||[]).length || data.status !== cur.status || (data.groups||[]).length !== (cur.groups||[]).length;
+      const changed = !cur || (data.teamIds||[]).length !== (cur.teamIds||[]).length || data.status !== cur.status || (data.groups||[]).length !== (cur.groups||[]).length || JSON.stringify(data.activeMatch) !== JSON.stringify(cur && cur.activeMatch);
+      // handle active match transitions
+      const am = data.activeMatch;
+      if(am && am.status === "playing"){
+        const m = (data.matches||[]).find(x=>x.id===am.matchId);
+        if(m){
+          if(!STATE.currentMatch || STATE.currentMatch.id !== m.id){
+            STATE.currentMatch = m;
+            STATE.currentQIndex = am.qIndex;
+            STATE.matchAnswers = m.answers || {};
+            (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
+            STATE.isDriver = (am.driverUid === (auth && auth.currentUser ? auth.currentUser.uid : null));
+            show("match");
+            renderMatchQuestion();
+            // timer based on startedAt
+            const elapsed = Math.floor((Date.now() - am.startedAt)/1000);
+            const rem = Math.max(0, am.timePerQ - elapsed);
+            startMatchTimer(rem > 0 ? rem : am.timePerQ);
+          } else if(STATE.currentQIndex !== am.qIndex){
+            STATE.currentQIndex = am.qIndex;
+            STATE.matchAnswers = m.answers || STATE.matchAnswers;
+            renderMatchQuestion();
+            const elapsed = Math.floor((Date.now() - am.startedAt)/1000);
+            const rem = Math.max(0, am.timePerQ - elapsed);
+            startMatchTimer(rem > 0 ? rem : am.timePerQ);
+          }
+        }
+      } else if(STATE.currentMatch && (!am || am.status !== "playing")){
+        // match ended
+        STATE.currentMatch = null;
+        show("bracket");
+        refreshUI();
+      }
       if(changed){
         DB.tournaments[STATE.tournamentId] = data;
         STATE.tournament = data;
