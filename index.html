@@ -937,8 +937,8 @@ function runDraw(tid){
     broadcast({type:"state",tournamentId:t.id});
     refreshUI();
     toast("Sorteo completado");
+    console.log("draw done, teams:", (t.teamIds||[]).length, t.teamIds);
     if((t.teamIds||[]).length <= 4){
-      // Eliminación directa: generar cuadro y mostrar bracket
       generateKnockout(t);
     } else {
       show("groups");
@@ -1528,7 +1528,14 @@ function renderBracketView(){
   const t = STATE.tournament;
   const container = $("bracketView");
   if(!container) return;
-  if(!t || !t.knockout){ container.innerHTML="<p class='small'>El cuadro se generará al clasificar.</p>"; return; }
+  if(!t || !t.knockout){
+    if(t && (t.teamIds||[]).length>0){
+      container.innerHTML="<p class='small'>El cuadro aún no se generó.</p><button class='btn' onclick='generateKnockout(STATE.tournament);'>Generar cuadro eliminatorio</button>";
+    } else {
+      container.innerHTML="<p class='small'>El cuadro se generará al clasificar.</p>";
+    }
+    return;
+  }
   container.innerHTML = t.knockout.rounds.map(r=>{
     return `<div class="card"><h3>${r.name}</h3>` + r.matches.map(m=>{
       const n0 = m.teamNames[0]||"-";
