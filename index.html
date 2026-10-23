@@ -3,162 +3,1511 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Evaluación interactiva SIC · AAP3 y AAP4</title>
-<script type="text/javascript" src="https://ff.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=a73Ata9511eLuLYbszMLgv--NQI-dS2yQJxhm2CQONEREimufnXPSGBcG_GCrONe7yOpgsPG8a_qiyhvjLyY1kSKC2eUpgrYLPt6WJyrkA3-NwJRYceoGzZn8o9DCBnBPeyLzHPXIgHqi10vgJPc8eK3eTs1ZRS0-6fjUlMzJdkiH2TUcsFYjpxswhaw0WjwNJgfiq_kmq9uW7Hu3FcSINOH2YFFkZvxJWGPerD9HZMMgRRmALCZx28DPv-ypR-phtvnWeBRCBGNuG-t4PP3Mzuiz2kr53xNfcvdDrkd9KT8PkZj7SZRDmnbCSvTyGVwNu4xr07oUkmBV_X39JWbkw" charset="UTF-8"></script><style>
-:root{--azul:#1e4f82;--azul2:#2b6cb0;--fondo:#edf3f8;--texto:#253448;--verde:#237a57;--rojo:#b83232;--borde:#d7e1eb;--activo:#319795;--pasivo:#dd6b20;--pn:#805ad5}
-*{box-sizing:border-box}body{margin:0;padding:18px;background:var(--fondo);color:var(--texto);font:16px/1.5 "Segoe UI",Arial,sans-serif}
-main{max-width:900px;margin:auto;background:#fff;border-radius:18px;box-shadow:0 8px 28px #1c35501a;padding:clamp(18px,4vw,34px)}
-header{text-align:center;border-bottom:1px solid var(--borde);padding-bottom:20px;margin-bottom:22px}.brand{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--azul)}h1{font-size:clamp(24px,4vw,34px);color:var(--azul);line-height:1.2;margin:8px 0}h2{font-size:23px;margin:8px 0 14px;color:var(--azul)}.sub{color:#5d6b7c;max-width:700px;margin:8px auto}
-.screen{display:none}.screen.active{display:block}.field{margin:15px 0}.field label{display:block;font-weight:700;margin-bottom:6px}input,select{width:100%;padding:12px;border:2px solid var(--borde);border-radius:9px;font-size:16px;background:#fff;color:var(--texto)}button{font:inherit;cursor:pointer;border:0;border-radius:9px;padding:12px 17px;font-weight:750}.btn{background:var(--azul2);color:white;width:100%;margin-top:12px}.btn.secondary{background:#e8f0f8;color:var(--azul)}button:disabled{opacity:.55;cursor:not-allowed}.pill{display:inline-block;border-radius:30px;background:#e8f0f8;color:var(--azul);padding:5px 11px;font-size:13px;font-weight:800}.notice{background:#f5f8fb;border-left:4px solid var(--azul2);padding:13px 15px;border-radius:6px;margin:15px 0}.bar{height:9px;background:#e8edf3;border-radius:20px;overflow:hidden;margin:15px 0}.bar div{height:100%;width:0;background:var(--verde);transition:width .2s}.qtext{font-size:20px;font-weight:750;margin:16px 0}.scenario{padding:14px;background:#f5f8fb;border-radius:9px;margin:12px 0}.options{display:grid;gap:10px;margin:15px 0}.opt{background:#fff;color:var(--texto);text-align:left;border:2px solid var(--borde);width:100%}.opt.selected{border-color:var(--azul2);background:#edf6ff}.opt.correct{border-color:var(--verde);background:#eaf8f0}.opt.wrong{border-color:var(--rojo);background:#fff0f0}.feedback{padding:12px;border-radius:8px;margin-top:12px}.good{background:#eaf8f0;color:#1d6848}.bad{background:#fff0f0;color:#982e2e}.small{font-size:13px;color:#64748b}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.gamecard{padding:17px;border:2px solid var(--borde);border-radius:12px;background:white}.gamecard h3{margin:4px 0;color:var(--azul)}.summary{background:#f5f8fb;border-radius:10px;padding:15px;margin:12px 0}.resultbig{font-size:44px;font-weight:900;color:var(--azul);text-align:center}.center{text-align:center}.hide{display:none!important}#datosEnviados{text-align:left;background:#f5f8fb;border:1px solid var(--borde);border-radius:9px;padding:12px;font-size:13px;white-space:pre-wrap;word-break:break-word;max-height:260px;overflow:auto;margin-top:12px}@media(max-width:560px){body{padding:8px}main{padding:18px}.qtext{font-size:18px}}
+<title>COPA CONTABLE 2026 · Torneo educativo · Escuela N.º 4-151 Dr. Benito Marianetti</title>
+<style>
+:root{
+  --azul-noche:#0b1a33;
+  --azul-medio:#122a52;
+  --azul-claro:#1e3a6e;
+  --dorado:#d4af37;
+  --dorado-claro:#f0d47a;
+  --blanco:#ffffff;
+  --gris:#cbd5e1;
+  --verde:#22c55e;
+  --rojo:#ef4444;
+  --amarillo:#f59e0b;
+  --card:rgba(255,255,255,.06);
+  --borde:rgba(212,175,55,.35);
+  --sombra:0 12px 40px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 50% -10%,#1e3a6e 0%,#0b1a33 60%,#050d1f 100%);color:#eaf0fa;font-family:"Segoe UI",system-ui,Arial,sans-serif;min-height:100vh}
+body{padding:14px}
+main{max-width:1180px;margin:auto}
+header.app{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border:1px solid var(--borde);border-radius:18px;background:linear-gradient(135deg,rgba(212,175,55,.12),rgba(30,58,110,.4));backdrop-filter:blur(6px);margin-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.escudo{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#f0d47a,#d4af37 60%,#8a6f1f);display:grid;place-items:center;font-weight:900;color:#0b1a33;font-size:20px;border:3px solid #fff;box-shadow:0 4px 14px rgba(212,175,55,.5)}
+.titles h1{margin:0;font-size:clamp(20px,3vw,28px);color:var(--dorado-claro);letter-spacing:.02em}
+.titles .sub{font-size:12px;color:#cbd5e1;margin-top:2px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:700;transition:transform .12s,opacity .12s}
+button:disabled{opacity:.5;cursor:not-allowed}
+.btn{background:linear-gradient(135deg,#d4af37,#b8922a);color:#0b1a33}
+.btn.sec{background:rgba(255,255,255,.1);color:#eaf0fa;border:1px solid var(--borde)}
+.btn.danger{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}
+.btn.ghost{background:transparent;color:#cbd5e1;border:1px solid rgba(255,255,255,.15)}
+.btn:hover:not(:disabled){transform:translateY(-1px)}
+.card{background:var(--card);border:1px solid var(--borde);border-radius:16px;padding:16px;box-shadow:var(--sombra);margin-bottom:14px}
+.screen{display:none}.screen.active{display:block}
+.grid{display:grid;gap:12px}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grid4{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+h2{color:var(--dorado-claro);margin:6px 0 10px}
+h3{color:#f0d47a;margin:6px 0}
+p{margin:6px 0;line-height:1.5}
+.small{font-size:13px;color:#9fb0cc}
+.muted{color:#6b7a99}
+.field{margin:10px 0}
+.field label{display:block;font-weight:700;margin-bottom:6px;color:#eaf0fa}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--borde);border-radius:10px;font-size:15px;background:rgba(255,255,255,.08);color:#fff}
+input::placeholder{color:#7f8faa}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+th{color:var(--dorado);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+tr:hover td{background:rgba(255,255,255,.03)}
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:800;margin:2px}
+.b-gold{background:rgba(212,175,55,.2);color:var(--dorado-claro);border:1px solid var(--borde)}
+.b-blue{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.4)}
+.b-green{background:rgba(34,197,94,.2);color:#86efac;border:1px solid rgba(34,197,94,.4)}
+.b-red{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.4)}
+.b-gray{background:rgba(148,163,184,.2);color:#cbd5e1;border:1px solid rgba(148,163,184,.4)}
+.progress{height:10px;background:rgba(255,255,255,.08);border-radius:20px;overflow:hidden;margin:10px 0}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#d4af37);transition:width .3s}
+.qtext{font-size:19px;font-weight:750;margin:12px 0;color:#fff}
+.scenario{padding:12px;background:rgba(255,255,255,.05);border-left:3px solid var(--dorado);border-radius:8px;margin:10px 0;color:#cbd5e1}
+.options{display:grid;gap:8px;margin:12px 0}
+.opt{background:rgba(255,255,255,.06);color:#eaf0fa;text-align:left;border:1px solid var(--borde);width:100%;padding:12px 14px}
+.opt.selected{border-color:var(--dorado);background:rgba(212,175,55,.15)}
+.opt.correct{border-color:var(--verde);background:rgba(34,197,94,.15)}
+.opt.wrong{border-color:var(--rojo);background:rgba(239,68,68,.15)}
+.feedback{padding:12px;border-radius:9px;margin-top:12px}
+.good{background:rgba(34,197,94,.15);color:#86efac;border:1px solid rgba(34,197,94,.4)}
+.bad{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.4)}
+.info{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.3)}
+.notice{background:rgba(212,175,55,.08);border-left:4px solid var(--dorado);padding:12px 14px;border-radius:8px;margin:12px 0}
+.center{text-align:center}
+.big{font-size:52px;font-weight:900;color:var(--dorado-claro)}
+.ko{display:grid;gap:10px}
+.matchcard{padding:12px;border:1px solid var(--borde);border-radius:12px;background:rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.teamchip{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.08);font-weight:700}
+.winner{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.5)}
+.loser{opacity:.55}
+.countdown{font-size:clamp(34px,8vw,72px);font-weight:900;color:var(--dorado-claro);letter-spacing:.05em;text-align:center;font-variant-numeric:tabular-nums}
+.modal-back{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px}
+.modal-back.active{display:flex}
+.modal{background:#0f2142;border:1px solid var(--borde);border-radius:16px;padding:18px;max-width:520px;width:100%;box-shadow:var(--sombra)}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0f2142;border:1px solid var(--borde);padding:10px 16px;border-radius:10px;z-index:10000;display:none}
+.toast.show{display:block}
+@media(max-width:640px){body{padding:8px}header.app{padding:10px}.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.pulse{animation:pulse 1.2s infinite}
+@keyframes confetti{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
+.confetti{position:fixed;top:-10px;width:10px;height:14px;opacity:.9;animation:confetti 3s linear forwards;pointer-events:none;z-index:9998}
 </style>
 </head>
-<body><main>
-<header><div class="brand">ESCUELA N.º 4-151 · DR. BENITO MARIANETTI</div><h1>Desafío Contable: del Patrimonio al Libro Diario</h1><p class="sub">Sistema de Información Contable e Informática Aplicada a la Gestión · 3.º año</p><div><span class="pill">AAP3 · Patrimonio y partida doble</span> <span class="pill">AAP4 · Introducción a la registración</span></div></header>
-<section id="registro" class="screen active">
-<h2>1. Identificación del estudiante</h2><p>Completá tus datos antes de comenzar. Vas a resolver 6 juegos con 10 actividades cada uno (60 actividades en total). Leé cada situación con atención.</p>
-<div class="field"><label for="nombre">Nombre y apellido</label><input id="nombre" autocomplete="name" required placeholder="Ej.: Martina González"></div>
-<div class="field"><label for="curso">Curso y división</label><select id="curso"><option value="">Seleccioná tu curso</option><option value="3ro 1ra">3ro Año 1ra División</option><option value="3ro 4ta">3ro Año 4ta División</option></select></div>
-<div class="field"><label for="grupo">Grupo (si corresponde)</label><select id="grupo"><option value="Sin grupo">Sin grupo / individual</option><option>Grupo 1</option><option>Grupo 2</option><option>Grupo 3</option><option>Grupo 4</option><option>Grupo 5</option></select></div>
-<div class="notice"><strong>Importante:</strong> respondé por tus propios conocimientos. La nota se calcula automáticamente con tus respuestas y se enviará al formulario docente al finalizar.</div>
-<button class="btn" id="comenzar">Comenzar evaluación</button><p id="errorRegistro" class="small" role="alert"></p>
+<body>
+<main>
+<header class="app">
+  <div class="brand">
+    <div class="escudo">CC</div>
+    <div class="titles">
+      <h1>COPA CONTABLE 2026</h1>
+      <div class="sub">Escuela N.º 4-151 Dr. Benito Marianetti · Sistema de Información Contable · 3.º Año</div>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="btn ghost" id="navHome">Inicio</button>
+    <button class="btn ghost" id="navJoin">Ingresar</button>
+    <button class="btn ghost" id="navTeacher">Panel docente</button>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="home" class="screen active">
+  <div class="card">
+    <h2>🏆 COPA CONTABLE 2026</h2>
+    <p>Torneo educativo online de Sistema de Información Contable. Competí respondiendo preguntas teóricas y prácticas, acumulá puntos y llegá a la final.</p>
+    <div id="homeStatus" class="notice">Estado del torneo: <strong id="homeEstado">Sin sala activa</strong></div>
+    <div class="grid grid4">
+      <div class="card"><div class="small">Equipos registrados</div><div class="big" id="homeTeams">0</div></div>
+      <div class="card"><div class="small">Capacidad máxima</div><div class="big" id="homeCap">80</div></div>
+      <div class="card"><div class="small">Grupos</div><div class="big" id="homeGroups">-</div></div>
+      <div class="card"><div class="small">Código de sala</div><div class="big" id="homeCode" style="font-size:24px">-</div></div>
+    </div>
+    <div id="homeCountdown" class="center" style="margin:12px 0"></div>
+    <div class="grid grid2">
+      <button class="btn" id="btnIngresar">INGRESAR AL TORNEO</button>
+      <button class="btn sec" id="btnVerVivo">VER TORNEO EN VIVO</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Tabla de posiciones (si la competición comenzó)</h3>
+    <div id="homeStandings"></div>
+  </div>
+  <div class="card">
+    <h3>Compartir sala</h3>
+    <p class="small">Código o enlace para compartir la sala: <span id="homeShare">-</span></p>
+  </div>
 </section>
-<section id="intro" class="screen">
-<h2>2. Tus desafíos</h2><p id="saludo"></p><div class="notice">Son <strong>6 juegos de 10 actividades cada uno (60 actividades)</strong>, con un valor de 1 punto cada una. Se evaluarán clasificación patrimonial, ecuación estática y dinámica, cambios del patrimonio, partida doble y nociones iniciales de cuentas, plan de cuentas y Libro Diario.</div>
-<div class="cards">
-<div class="gamecard"><h3>🧠 Juego 1 · Quiz contable</h3><p>10 actividades: conceptos y ecuación patrimonial.</p></div>
-<div class="gamecard"><h3>⚡ Juego 2 · Clasificación rápida</h3><p>10 actividades: Activo, Pasivo o Patrimonio Neto.</p></div>
-<div class="gamecard"><h3>✅ Juego 3 · Verdadero o falso</h3><p>10 actividades: detectá afirmaciones correctas.</p></div>
-<div class="gamecard"><h3>🧮 Juego 4 · Calculadora patrimonial</h3><p>10 actividades: calcular importes y analizar cambios.</p></div>
-<div class="gamecard"><h3>🧩 Juego 5 · Armá el asiento</h3><p>10 actividades: Debe/Haber y partida doble.</p></div>
-<div class="gamecard"><h3>📒 Juego 6 · Detective contable</h3><p>10 actividades: cuentas, plan de cuentas y Libro Diario.</p></div>
-</div><button class="btn" id="iniciarEval">Comenzar los 6 juegos (60 actividades)</button>
+
+<!-- JOIN -->
+<section id="join" class="screen">
+  <div class="card">
+    <h2>Ingresar al torneo</h2>
+    <div class="field"><label>Código de sala</label><input id="joinCode" placeholder="Ej.: COPA2026"></div>
+    <div class="field"><label>Nombre del equipo</label><input id="joinTeamName" placeholder="Ej.: Los Contadores"></div>
+    <div class="field"><label>Integrantes (opcional)</label><input id="joinMembers" placeholder="Ej.: Ana, Luis, Sofía"></div>
+    <div class="field"><label>Código de acceso (si el docente lo habilita)</label><input id="joinAccess" placeholder="Opcional"></div>
+    <button class="btn" id="joinBtn">Registrar equipo</button>
+    <p id="joinMsg" class="small"></p>
+  </div>
 </section>
-<section id="evaluacion" class="screen">
-<div class="small" id="identificacion"></div><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px"><span class="pill" id="tipoJuego">Juego</span><strong id="contador">Actividad 1 de 10</strong></div><div class="bar"><div id="avance"></div></div>
-<div class="qtext" id="pregunta"></div><div class="scenario" id="situacion"></div><div id="respuesta" class="options"></div>
-<div id="feedback" class="feedback hide" aria-live="polite"></div><button id="comprobar" class="btn">Confirmar respuesta</button><button id="siguiente" class="btn hide">Siguiente actividad →</button>
+
+<!-- WAITING ROOM -->
+<section id="waiting" class="screen">
+  <div class="card center">
+    <h2>Sala de espera</h2>
+    <p id="waitingTeam"></p>
+    <div class="countdown" id="waitingCountdown">--:--</div>
+    <p class="small" id="waitingStatus">ESPERANDO INSCRIPCIONES</p>
+    <div class="notice" id="waitingList">Equipos inscritos: <span id="waitingTeamsCount">0</span></div>
+    <div id="waitingTeams" style="max-height:220px;overflow:auto;margin-top:8px"></div>
+  </div>
 </section>
-<section id="resultado" class="screen">
-<h2 class="center">Evaluación finalizada</h2><div class="resultbig" id="notaGrande">—</div><p class="center" id="porcentaje"></p><div class="summary" id="detalle"></div><div class="notice" id="estadoEnvio">Preparando el envío del resultado…</div><div id="accionesEnvio" class="hide"><button class="btn" id="btnReenviar">Reenviar mis respuestas al formulario</button><a class="btn secondary" id="btnAbrirForm" href="#" target="_blank" rel="noopener">Abrir el formulario</a><button class="btn secondary" id="btnDescargar">Descargar copia</button><button class="btn secondary" id="btnVerDatos">Ver datos</button><pre id="datosEnviados" class="hide"></pre></div>
+
+<!-- DRAW -->
+<section id="draw" class="screen">
+  <div class="card center">
+    <h2>Sorteo de grupos</h2>
+    <div id="drawAnim" style="min-height:120px;display:grid;place-items:center;font-size:48px">🎲</div>
+    <p id="drawStatus" class="small">Preparando sorteo...</p>
+    <div id="drawResult"></div>
+  </div>
 </section>
+
+<!-- GROUPS -->
+<section id="groups" class="screen">
+  <div class="card">
+    <h2>Fase de grupos</h2>
+    <div id="groupsView"></div>
+  </div>
+</section>
+
+<!-- STANDINGS -->
+<section id="standings" class="screen">
+  <div class="card">
+    <h2>Tabla de posiciones</h2>
+    <div id="standingsView"></div>
+  </div>
+</section>
+
+<!-- MATCH / QUESTION -->
+<section id="match" class="screen">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <span class="badge b-blue" id="matchRound">Ronda</span>
+      <span class="badge b-gold" id="matchTeams">Equipo A vs Equipo B</span>
+      <span class="badge b-gray" id="matchProgress">Pregunta 1/5</span>
+    </div>
+    <div class="progress"><div id="matchTimerBar"></div></div>
+    <div class="center" style="font-size:22px;font-weight:800;color:var(--dorado-claro)" id="matchTimer">60</div>
+    <div class="qtext" id="matchQ"></div>
+    <div class="scenario" id="matchScenario"></div>
+    <div class="options" id="matchOpts"></div>
+    <button class="btn" id="matchSubmit" disabled>Enviar respuesta</button>
+    <div id="matchFeedback" class="feedback hide"></div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="result" class="screen">
+  <div class="card center">
+    <h2>Resultado del enfrentamiento</h2>
+    <div class="big" id="resultScore">0 - 0</div>
+    <p id="resultWinner"></p>
+    <div id="resultDetail" class="small"></div>
+    <button class="btn" id="resultNext">Continuar</button>
+  </div>
+</section>
+
+<!-- BRACKET -->
+<section id="bracket" class="screen">
+  <div class="card">
+    <h2>Cuadro eliminatorio</h2>
+    <div id="bracketView"></div>
+  </div>
+</section>
+
+<!-- PODIUM -->
+<section id="podium" class="screen">
+  <div class="card center">
+    <h2>🏆 CAMPEÓN</h2>
+    <div class="big pulse" id="podiumChampion">-</div>
+    <div id="podiumList"></div>
+    <button class="btn sec" id="podiumHome">Volver al inicio</button>
+  </div>
+</section>
+
+<!-- TEACHER PANEL -->
+<section id="teacher" class="screen">
+  <div class="card">
+    <h2>Panel docente</h2>
+    <div id="teacherAuth">
+      <div class="field"><label>Contraseña docente</label><input type="password" id="teacherPass"></div>
+      <button class="btn" id="teacherLogin">Ingresar</button>
+      <p id="teacherAuthMsg" class="small"></p>
+    </div>
+    <div id="teacherPanel" style="display:none">
+      <div class="grid grid2">
+        <div class="card">
+          <h3>Crear / configurar sala</h3>
+          <div class="field"><label>Nombre del torneo</label><input id="cfgName" value="COPA CONTABLE 2026"></div>
+          <div class="field"><label>Descripción</label><input id="cfgDesc" value="Torneo educativo de SIC - 3º Año"></div>
+          <div class="field"><label>Código de sala</label><input id="cfgCode" value="COPA2026"></div>
+          <div class="field"><label>Máximo de equipos</label><input type="number" id="cfgMax" value="80" min="2" max="80"></div>
+          <div class="field"><label>Número de grupos (0 = automático)</label><input type="number" id="cfgGroups" value="0" min="0" max="4"></div>
+          <div class="field"><label>Tiempo de inscripción (min)</label><input type="number" id="cfgRegMin" value="10" min="1" max="60"></div>
+          <div class="field"><label>Equipos que clasifican por grupo</label><input type="number" id="cfgQualify" value="2" min="1" max="8"></div>
+          <div class="field"><label>Preguntas por enfrentamiento</label><input type="number" id="cfgQPerMatch" value="5" min="3" max="10"></div>
+          <div class="field"><label>Tiempo por pregunta (seg)</label><input type="number" id="cfgQTime" value="60" min="15" max="120"></div>
+          <div class="field"><label>Código de acceso (opcional)</label><input id="cfgAccess"></div>
+          <button class="btn" id="createRoom">Crear sala</button>
+          <button class="btn sec" id="startReg">Abrir inscripción (10 min)</button>
+          <button class="btn sec" id="closeReg">Cerrar inscripción</button>
+          <button class="btn danger" id="resetRoom">Reiniciar torneo</button>
+        </div>
+        <div class="card">
+          <h3>Estado</h3>
+          <p>Estado: <strong id="tStatus">-</strong></p>
+          <p>Equipos: <span id="tTeams">0</span></p>
+          <p>Cierre: <span id="tClose">-</span></p>
+          <h4>Inscripciones</h4>
+          <div id="tRegList" style="max-height:260px;overflow:auto"></div>
+          <button class="btn sec" id="runDraw">Ejecutar sorteo</button>
+          <button class="btn sec" id="startGroupPhase">Iniciar fase de grupos</button>
+          <button class="btn sec" id="advanceKnockout">Avanzar eliminatorias</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Gestión de preguntas</h3>
+        <p class="small">Banco: <span id="qCount">0</span> preguntas. Unidades habilitadas:</p>
+        <div id="unitToggles"></div>
+        <div class="grid grid2" style="margin-top:10px">
+          <button class="btn sec" id="exportQuestions">Exportar preguntas (JSON)</button>
+          <button class="btn sec" id="importQuestions">Importar preguntas (JSON)</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json" style="display:none">
+        <div id="qEditor" style="margin-top:12px"></div>
+      </div>
+      <div class="card">
+        <h3>Historial y resultados</h3>
+        <div id="historyView"></div>
+        <button class="btn sec" id="exportResults">Exportar resultados (CSV)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONS MANAGEMENT full (reuse teacher) -->
+
+<!-- ERROR / RECONNECT -->
+<section id="error" class="screen">
+  <div class="card center">
+    <h2>⚠️ Problema de conexión</h2>
+    <p id="errorMsg">Se perdió la conexión con el servidor.</p>
+    <button class="btn" id="retryBtn">Reintentar</button>
+  </div>
+</section>
+
 </main>
+
+<div class="modal-back" id="modalBack">
+  <div class="modal" id="modalContent"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Firebase SDK (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
 <script>
 "use strict";
-const GOOGLE_FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLScbml-xNn3aBoGs8KlE4aX65rSQY9o1tDMLPRqxoO63tK9zNg/formResponse";
-const GOOGLE_VIEW_URL="https://docs.google.com/forms/d/e/1FAIpQLScbml-xNn3aBoGs8KlE4aX65rSQY9o1tDMLPRqxoO63tK9zNg/viewform";
-const FIELDS={nombre:"entry.766258347",curso:"entry.1780292330",grupo:"entry.1534966167",detalle:"entry.2046082695",puntaje:"entry.662923074",total:"entry.1634785299",porcentaje:"entry.76191426",nota:"entry.87790841"};
+/* ============================================================
+   COPA CONTABLE 2026 - index1.html
+   ============================================================ */
 
-/* PEGÁ ACÁ la URL que te da Google Apps Script, terminada en /exec.
-   Mientras quede vacía ("") el archivo usa el envío directo al formulario.
-   Ejemplo:  const APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfy.../exec"; */
-const APPS_SCRIPT_URL="";
-const games=[
-{title:"Juego 1 · Quiz contable",desc:"Conceptos básicos y ecuación patrimonial",questions:[
-["¿Qué representa el Activo?","Una empresa tiene dinero en Caja, mercaderías, muebles y clientes que le deben.",["Bienes y derechos de la empresa","Deudas con terceros","Solo el capital aportado"],0,"El Activo reúne bienes y derechos."],
-["¿Qué representa el Pasivo?","La empresa tiene una deuda pendiente con un proveedor.",["Los bienes de uso","Las obligaciones con terceros","Las ganancias del período"],1,"El Pasivo reúne obligaciones y deudas."],
-["¿Qué integra el Patrimonio Neto?","Se considera el aporte de los propietarios y los resultados acumulados.",["Solo las deudas","El Activo menos el Pasivo","Únicamente el dinero en Caja"],1,"Patrimonio Neto = Activo − Pasivo."],
-["Elegí la ecuación patrimonial estática.","Se busca expresar la relación entre los elementos patrimoniales en un momento determinado.",["Activo = Pasivo + Patrimonio Neto","Activo = Ingresos − Gastos","Pasivo = Activo + Patrimonio Neto"],0,"La ecuación fundamental es Activo = Pasivo + Patrimonio Neto."],
-["Si Activo = $900.000 y Pasivo = $250.000, ¿cuál es el Patrimonio Neto?","Aplicá PN = Activo − Pasivo.",["$1.150.000","$650.000","$250.000"],1,"$900.000 − $250.000 = $650.000."],
-["Si Activo = $720.000 y PN = $500.000, ¿cuál es el Pasivo?","Aplicá Pasivo = Activo − PN.",["$1.220.000","$500.000","$220.000"],2,"$720.000 − $500.000 = $220.000."],
-["¿Cuál de estos elementos es un derecho de cobro?","Un cliente compró a crédito y todavía no pagó.",["Proveedores","Deudores por ventas","Capital"],1,"El importe que debe el cliente es un derecho de cobro, parte del Activo."],
-["¿Cuál es un ejemplo de bien de la empresa?","Elegí un elemento que pertenezca a la organización.",["Una deuda bancaria","Un escritorio de la oficina","Una factura pendiente de pago"],1,"El escritorio es un bien de la empresa y forma parte del Activo."],
-["¿Qué expresa la ecuación patrimonial?","La ecuación debe mantenerse equilibrada.",["La relación entre Activo, Pasivo y Patrimonio Neto","Solo las ventas del mes","La cantidad de empleados"],0,"La ecuación muestra cómo se financian los bienes y derechos: con deudas y patrimonio propio."],
-["Si el Activo es $400.000 y el Pasivo es $400.000, ¿cuánto es el PN?","Calculá la diferencia entre Activo y Pasivo.",["$800.000","$0","$400.000"],1,"PN = $400.000 − $400.000 = $0."]]},
-{title:"Juego 2 · Clasificación rápida",desc:"Identificá Activo, Pasivo o Patrimonio Neto",questions:[
-["La empresa tiene $35.000 en Caja. ¿Cómo se clasifica?","Es dinero disponible.",["Activo","Pasivo","Patrimonio Neto"],0,"Caja es un bien y se clasifica como Activo."],
-["La empresa debe $80.000 al proveedor. ¿Cómo se clasifica?","La obligación todavía está pendiente de pago.",["Activo","Pasivo","Patrimonio Neto"],1,"Proveedores representa una deuda: Pasivo."],
-["El aporte inicial de los dueños se registra como…","Representa financiación propia.",["Pasivo","Activo","Patrimonio Neto"],2,"El capital aportado integra el Patrimonio Neto."],
-["La empresa posee una computadora para trabajar.","La computadora es propiedad de la organización.",["Activo","Pasivo","Patrimonio Neto"],0,"La computadora es un bien de uso: Activo."],
-["Un préstamo bancario que aún no se devolvió es…","El banco tiene derecho a cobrarlo.",["Activo","Pasivo","Patrimonio Neto"],1,"El préstamo pendiente constituye una deuda: Pasivo."],
-["Mercaderías disponibles para la venta son…","Son bienes que pertenecen al negocio.",["Pasivo","Patrimonio Neto","Activo"],2,"Las mercaderías son bienes del Activo."],
-["La empresa tiene una deuda documentada con un pagaré.","Existe una obligación de pago documentada.",["Activo","Pasivo","Patrimonio Neto"],1,"La obligación documentada es Pasivo."],
-["Un cliente debe $22.000 por una venta a crédito.","La empresa tiene derecho a cobrar ese importe.",["Activo","Pasivo","Patrimonio Neto"],0,"Deudores por ventas es un derecho: Activo."],
-["Las ganancias acumuladas de la empresa forman parte del…","Son resultados positivos que incrementan el patrimonio propio.",["Pasivo","Patrimonio Neto","Activo"],1,"Las ganancias acumuladas integran el Patrimonio Neto."],
-["Un vehículo propiedad de la empresa se clasifica como…","Se utiliza para desarrollar la actividad.",["Pasivo","Activo","Patrimonio Neto"],1,"El vehículo es un bien de uso: Activo."]]},
-{title:"Juego 3 · Verdadero o falso",desc:"Analizá afirmaciones contables",questions:[
-["El Activo incluye bienes y derechos de la empresa.","Elegí si la afirmación es verdadera o falsa.",["Verdadero","Falso"],0,"Es verdadera: incluye bienes y derechos."],
-["El Pasivo está formado por las deudas y obligaciones.","Elegí si la afirmación es verdadera o falsa.",["Verdadero","Falso"],0,"Es verdadera: el Pasivo representa obligaciones con terceros."],
-["Una ganancia normalmente aumenta el Patrimonio Neto.","Considerá el efecto del resultado positivo.",["Verdadero","Falso"],0,"Es verdadera: una ganancia aumenta el Patrimonio Neto."],
-["Una pérdida normalmente aumenta el Patrimonio Neto.","Considerá el efecto del resultado negativo.",["Verdadero","Falso"],1,"Es falsa: una pérdida disminuye el Patrimonio Neto."],
-["La ecuación patrimonial debe mantener su igualdad.","Activo = Pasivo + Patrimonio Neto.",["Verdadero","Falso"],0,"Es verdadera: ambos lados deben ser iguales."],
-["Comprar mercaderías siempre significa generar una deuda.","La compra puede pagarse en efectivo o quedar a crédito.",["Verdadero","Falso"],1,"Es falsa: si se paga en efectivo, no necesariamente nace una deuda."],
-["El aporte de los propietarios incrementa el Patrimonio Neto.","Pensá en el capital de la organización.",["Verdadero","Falso"],0,"Es verdadera: el aporte incrementa el capital propio."],
-["El Libro Diario registra operaciones en orden cronológico.","Considerá la función de este libro contable.",["Verdadero","Falso"],0,"Es verdadera: los asientos se registran según el orden temporal."],
-["En partida doble, el total del Debe debe ser igual al total del Haber.","Es una condición de equilibrio de cada asiento.",["Verdadero","Falso"],0,"Es verdadera: Debe y Haber deben sumar lo mismo."],
-["El plan de cuentas reemplaza a todos los comprobantes comerciales.","Pensá para qué se utiliza el listado de cuentas.",["Verdadero","Falso"],1,"Es falsa: el plan de cuentas ordena las cuentas, no reemplaza comprobantes."]]},
-{title:"Juego 4 · Calculadora patrimonial",desc:"Resolvé cálculos y cambios patrimoniales",questions:[
-["Calculá el Activo.","Pasivo $150.000 y PN $350.000. Activo = Pasivo + PN.",["$200.000","$500.000","$350.000"],1,"Activo = $150.000 + $350.000 = $500.000."],
-["Calculá el PN.","Activo $640.000 y Pasivo $190.000.",["$830.000","$450.000","$190.000"],1,"PN = $640.000 − $190.000 = $450.000."],
-["Calculá el Pasivo.","Activo $1.200.000 y PN $875.000.",["$325.000","$2.075.000","$875.000"],0,"Pasivo = $1.200.000 − $875.000 = $325.000."],
-["Los dueños aportan $60.000 en efectivo. ¿Qué cambio ocurre?","El dinero ingresa a Caja como aporte de capital.",["Aumenta Activo y aumenta PN","Aumenta Pasivo y baja PN","Baja Activo y aumenta Pasivo"],0,"Caja (Activo) y Capital/PN aumentan por el mismo importe."],
-["Se paga en efectivo una deuda de $25.000. ¿Qué sucede?","Se cancela una obligación usando dinero de Caja.",["Aumenta Activo y aumenta Pasivo","Disminuye Activo y disminuye Pasivo","Aumenta PN"],1,"Bajan Caja (Activo) y la deuda (Pasivo)."],
-["Se compra un mueble por $40.000 y se paga en efectivo.","Un bien aumenta y otro bien disminuye.",["Aumenta el Activo total necesariamente","Cambia la composición del Activo, sin cambiar su total","Aumenta el Pasivo"],1,"Aumenta Muebles y disminuye Caja por el mismo importe."],
-["La empresa recibe un préstamo bancario de $100.000 en su cuenta.","Ingresa dinero y nace una deuda con el banco.",["Aumentan Activo y Pasivo","Aumentan Activo y PN","Disminuye Activo y Pasivo"],0,"Aumenta el dinero disponible (Activo) y el préstamo (Pasivo)."],
-["Se obtiene una ganancia de $18.000.","Suponé que el resultado ya fue determinado.",["Disminuye PN","Aumenta PN","Aumenta Pasivo"],1,"Una ganancia aumenta el Patrimonio Neto."],
-["Se reconoce una pérdida de $12.000.","Considerá el efecto de un resultado negativo.",["Disminuye PN","Aumenta PN","Aumenta el Activo"],0,"Una pérdida disminuye el Patrimonio Neto."],
-["Activo $900.000; Pasivo $200.000. Luego se cancela $50.000 de deuda con efectivo. ¿Cuál es el nuevo Activo?","El pago reduce Caja y también reduce la deuda.",["$900.000","$850.000","$950.000"],1,"El Activo baja $50.000: $900.000 − $50.000 = $850.000."]]},
-{title:"Juego 5 · Armá el asiento",desc:"Debe, Haber y partida doble",questions:[
-["Compra mercaderías por $30.000 en efectivo. ¿Qué cuenta se debita?","Ingresa mercadería y sale dinero de Caja.",["Caja","Mercaderías","Proveedores"],1,"Mercaderías aumenta y se registra en el Debe."],
-["En esa compra pagada en efectivo, ¿qué cuenta se acredita?","Caja disminuye por el pago.",["Mercaderías","Capital","Caja"],2,"Caja disminuye y se registra en el Haber."],
-["Se recibe un préstamo bancario depositado en cuenta. ¿Qué cuenta va al Debe?","Ingresa dinero a la cuenta bancaria.",["Banco cuenta corriente","Préstamos bancarios","Proveedores"],0,"Banco cuenta corriente aumenta y va al Debe."],
-["Al recibir el préstamo, ¿qué cuenta va al Haber?","La empresa asume una obligación con el banco.",["Caja","Préstamos bancarios","Mercaderías"],1,"Préstamos bancarios aumenta como Pasivo y va al Haber."],
-["Se paga a un proveedor una deuda con dinero de Caja. ¿Qué cuenta se debita?","La deuda disminuye.",["Proveedores","Caja","Ventas"],0,"Proveedores disminuye; las cuentas de Pasivo disminuyen por el Debe."],
-["Al pagar esa deuda en efectivo, ¿qué cuenta se acredita?","Sale dinero de Caja.",["Proveedores","Caja","Capital"],1,"Caja disminuye y se registra en el Haber."],
-["Los propietarios aportan efectivo al iniciar el negocio. ¿Qué cuenta se debita?","Ingresa dinero al patrimonio de la empresa.",["Capital","Caja","Proveedores"],1,"Caja aumenta y se debita."],
-["En el asiento del aporte inicial, ¿qué cuenta se acredita?","El aporte incrementa el capital propio.",["Caja","Mercaderías","Capital"],2,"Capital aumenta y se acredita."],
-["¿Qué regla debe cumplir un asiento por partida doble?","Compará los totales de las columnas.",["Debe = Haber","Debe siempre es mayor","Haber siempre es mayor"],0,"La suma del Debe debe igualar la suma del Haber."],
-["Se compra equipo de oficina a crédito. ¿Cuál es la combinación más adecuada?","El equipo ingresa y queda una deuda pendiente.",["Debe: Equipos; Haber: Proveedores","Debe: Proveedores; Haber: Equipos","Debe: Caja; Haber: Capital"],0,"Aumenta Equipos (Activo) al Debe y aumenta Proveedores (Pasivo) al Haber."]]},
-{title:"Juego 6 · Detective contable",desc:"Cuentas, plan de cuentas y Libro Diario",questions:[
-["¿Qué es una cuenta contable?","Permite registrar movimientos de un elemento patrimonial o resultado.",["Un registro para agrupar aumentos y disminuciones de un concepto","Un comprobante de pago exclusivamente","Una lista de empleados"],0,"La cuenta reúne movimientos de un concepto, como Caja o Proveedores."],
-["¿Para qué sirve el plan de cuentas?","La empresa necesita nombres ordenados para registrar operaciones.",["Para ordenar y codificar las cuentas que utilizará","Para reemplazar el Libro Diario","Para calcular solo el IVA"],0,"El plan de cuentas es un listado ordenado de cuentas."],
-["¿Qué información se suele encontrar en el plan de cuentas?","Pensá cómo se identifican las cuentas.",["Código y nombre de cada cuenta","Solo el nombre de los clientes","Únicamente las fechas de pago"],0,"Generalmente presenta código y denominación de las cuentas."],
-["¿Qué registra el Libro Diario?","La empresa realiza compras, ventas, pagos y cobros.",["Operaciones en orden cronológico mediante asientos","Solo el saldo de Caja al cierre","Únicamente el inventario físico"],0,"El Libro Diario registra operaciones en orden cronológico."],
-["¿Cómo se denomina cada registro de una operación en el Libro Diario?","Se presenta con cuentas y columnas Debe/Haber.",["Asiento contable","Presupuesto","Remito"],0,"Cada registro de una operación es un asiento contable."],
-["¿Qué representa el Debe y el Haber?","Son las dos partes principales de la registración.",["Las columnas de los asientos contables","Dos tipos de factura","Los datos del cliente y proveedor"],0,"Debe y Haber son las dos columnas de registro."],
-["¿Qué documento comercial puede respaldar una compra?","Se necesita documentación de la operación.",["Una factura del proveedor","Un organigrama","Un plan de cuentas"],0,"La factura documenta la compra; el registro contable se basa en la operación y su comprobante."],
-["¿Cuál de estas opciones es el nombre de una cuenta?","Elegí una denominación contable.",["Caja","3ro 1ra","Octubre"],0,"Caja es una cuenta contable que representa dinero disponible."],
-["¿Por qué conviene usar un plan de cuentas uniforme?","La empresa quiere evitar nombres diferentes para el mismo concepto.",["Para registrar de manera ordenada y consistente","Para no realizar asientos","Para que el Debe no coincida con el Haber"],0,"La uniformidad facilita la identificación y clasificación de operaciones."],
-["En un asiento, Debe suma $75.000 y Haber suma $70.000. ¿Qué corresponde revisar?","Un asiento debe respetar la partida doble.",["Está equilibrado, no hay que revisar nada","Hay una diferencia de $5.000 y debe corregirse","Debe eliminarse siempre la cuenta Caja"],1,"Debe y Haber difieren en $5.000; el asiento no está equilibrado y debe revisarse."]]}
-];
-const activities=games.flatMap((g,gi)=>g.questions.map((q,qi)=>({game:g.title,gameIndex:gi,gameActivity:qi+1,q:q[0],s:q[1],o:q[2],a:q[3],why:q[4]})));
-let student={},idx=0,answers=Array(activities.length).fill(null),locked=false;
-const $=id=>document.getElementById(id);
-function screen(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
-$("comenzar").addEventListener("click",()=>{const n=$("nombre").value.trim(),c=$("curso").value;if(!n||!c){$("errorRegistro").textContent="Completá tu nombre y apellido y seleccioná el curso.";return;}student={nombre:n,curso:c,grupo:$("grupo").value};$("saludo").textContent=`¡Éxitos, ${n}! Curso: ${c}. Vas a completar 6 juegos, con 10 actividades cada uno: 60 actividades en total.`;screen("intro");});
-$("iniciarEval").addEventListener("click",()=>{screen("evaluacion");render();});
-function render(){locked=false;const x=activities[idx];$("identificacion").textContent=`${student.nombre} · ${student.curso} · ${student.grupo}`;$("tipoJuego").textContent=x.game;$("contador").textContent=`Juego ${x.gameIndex+1} de 6 · Actividad ${x.gameActivity} de 10 · Total ${idx+1} de ${activities.length}`;$("avance").style.width=(idx/activities.length*100)+"%";$("pregunta").textContent=x.q;$("situacion").textContent=x.s;$("respuesta").innerHTML="";$("feedback").className="feedback hide";$("feedback").textContent="";$("comprobar").classList.remove("hide");$("comprobar").disabled=true;$("siguiente").classList.add("hide");x.o.forEach((v,i)=>{const b=document.createElement("button");b.type="button";b.className="opt";b.textContent=v;b.addEventListener("click",()=>{if(locked)return;answers[idx]=i;[...$("respuesta").children].forEach(z=>z.classList.remove("selected"));b.classList.add("selected");$("comprobar").disabled=false;});$("respuesta").appendChild(b);});}
-$("comprobar").addEventListener("click",()=>{if(locked||answers[idx]===null)return;locked=true;const x=activities[idx],ok=answers[idx]===x.a;[...$("respuesta").children].forEach((b,i)=>{b.disabled=true;if(i===x.a)b.classList.add("correct");else if(i===answers[idx])b.classList.add("wrong");});$("feedback").className="feedback "+(ok?"good":"bad");$("feedback").textContent=(ok?"¡Correcto! ":"Respuesta incorrecta. ")+x.why;$("comprobar").classList.add("hide");$("siguiente").classList.remove("hide");if(idx===activities.length-1){$("siguiente").textContent="Finalizar los 6 juegos y ver mi nota →";}else if(x.gameActivity===10&&x.gameIndex<5){$("siguiente").textContent=`Juego completado. Continuar al Juego ${x.gameIndex+2} →`;}else{$("siguiente").textContent="Siguiente actividad →";}});
-$("siguiente").addEventListener("click",()=>{if(idx<activities.length-1){idx++;render();}else finish();});
-function finish(){const points=answers.reduce((sum,a,i)=>sum+(a===activities[i].a?1:0),0),pct=points/activities.length*100,note=Math.round((points/activities.length*10)*10)/10;$("notaGrande").textContent=note.toLocaleString("es-AR",{minimumFractionDigits:1,maximumFractionDigits:1})+"/10";$("porcentaje").textContent=`Respuestas correctas: ${points} de ${activities.length} · ${pct.toFixed(1)}%`;$("detalle").innerHTML=games.map((g,gi)=>{const subset=activities.map((a,i)=>({...a,i})).filter(a=>a.gameIndex===gi);const correct=subset.filter(a=>answers[a.i]===a.a).length;return `<div style="padding:9px 0;border-bottom:1px solid #d7e1eb"><strong>${g.title}:</strong> ${correct}/10 correctas · Nota del juego: ${(correct).toFixed(1)}/10</div>`;}).join("")+`<p style="margin-top:12px"><strong>Resultado total:</strong> ${points}/60 · <strong>Nota final:</strong> ${note.toLocaleString("es-AR",{minimumFractionDigits:1,maximumFractionDigits:1})}/10</p>`;screen("resultado");send(points,pct,note);}
-let ultimoEnvio=null;
-let enviando=false;
-function armarDetalle(){return games.map((g,gi)=>{const subset=activities.map((a,i)=>({...a,i})).filter(a=>a.gameIndex===gi);const ok=subset.filter(a=>answers[a.i]===a.a).length;return `${g.title}: ${ok}/10; `+subset.map(a=>`A${a.gameActivity}=${answers[a.i]===a.a?"C":"I"}`).join(",");}).join(" | ");}
-function urlPrecargada(){const q=new URLSearchParams({usp:"pp_url"});Object.entries(ultimoEnvio.data).forEach(([k,v])=>q.append(k,String(v)));return GOOGLE_VIEW_URL+"?"+q.toString();}
-function mensajeEnvio(texto,color){const s=$("estadoEnvio");s.textContent=texto;s.style.background=color;s.style.borderLeft="4px solid "+(color==="#eaf8f0"?"#237a57":"#c53030");s.style.padding="12px";}
-function envioPorFormulario(data){const p=new URLSearchParams();Object.entries(data).forEach(([k,v])=>p.append(k,String(v)));p.append("fvv","1");p.append("pageHistory","0");p.append("timezone",String(new Date().getTimezoneOffset()));try{fetch(GOOGLE_FORM_URL,{method:"POST",mode:"no-cors",body:p.toString(),headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"}}).catch(()=>{});}catch(e){}const form=document.createElement("form");form.method="POST";form.action=GOOGLE_FORM_URL;form.target="sic_gf";form.style.display="none";Object.entries(data).forEach(([k,v])=>{const i=document.createElement("input");i.type="hidden";i.name=k;i.value=String(v);form.appendChild(i);});let f=document.getElementById("sic_gf");if(!f){f=document.createElement("iframe");f.name="sic_gf";f.id="sic_gf";f.style.display="none";document.body.appendChild(f);}document.body.appendChild(form);form.submit();setTimeout(()=>{try{form.remove();}catch(e){}},8000);}
-async function enviarAhora(){if(!ultimoEnvio||enviando)return;enviando=true;$("btnReenviar").disabled=true;
- const d=ultimoEnvio.data;
- const carga={nombre:d[FIELDS.nombre],curso:d[FIELDS.curso],grupo:d[FIELDS.grupo],detalle:d[FIELDS.detalle],puntaje:d[FIELDS.puntaje],total:d[FIELDS.total],porcentaje:d[FIELDS.porcentaje],nota:d[FIELDS.nota]};
- if(APPS_SCRIPT_URL){
-   mensajeEnvio("⏳ Enviando tus respuestas...","#edf6ff");
-   try{
-     const r=await fetch(APPS_SCRIPT_URL,{method:"POST",body:JSON.stringify(carga),redirect:"follow"});
-     const j=await r.json();
-     if(j&&j.ok){mensajeEnvio("✅ ¡Respuestas registradas! El docente ya puede verlas en la hoja de respuestas.","#eaf8f0");enviando=false;$("btnReenviar").disabled=false;return;}
-     throw new Error(j&&j.error?j.error:"respuesta inesperada del servidor");
-   }catch(e){
-     mensajeEnvio("⚠️ No se pudo confirmar el envío ("+e.message+"). Presioná «Reenviar» para volver a intentarlo.","#fff0f0");
-     enviando=false;$("btnReenviar").disabled=false;return;
-   }
- }
- envioPorFormulario(d);
- setTimeout(()=>{mensajeEnvio("📨 Se envió la respuesta al formulario de Google, pero Google no confirma la recepción desde esta página. Guardá esta pantalla y avisale a tu docente.","#fff7e6");enviando=false;$("btnReenviar").disabled=false;},2500);
+// ---------- Firebase config (rellenar por el propietario) ----------
+const firebaseConfig = {
+  apiKey: "AIzaSyBgxj8M3GzqVpo85GfxBLeWKZgAi61jDAM",
+  authDomain: "desafio-iag.firebaseapp.com",
+  projectId: "desafio-iag",
+  storageBucket: "desafio-iag.firebasestorage.app",
+  messagingSenderId: "248667054622",
+  appId: "1:248667054622:web:c808c95352dc3d2a62840f",
+  measurementId: "G-ZH4E14NGXJ"
+}; // {apiKey,authDomain,projectId,...}
+// Para configurar: window.FIREBASE_CONFIG = {...} antes de cargar, o editar aquí.
+const TEACHER_PASSWORD = "docente2026"; // cambiar en producción
+
+let firebaseApp=null, db=null, auth=null, fbMode=false;
+try{
+  if(FIREBASE_CONFIG && FIREBASE_CONFIG.apiKey){
+    firebaseApp = firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.firestore();
+    auth = firebase.auth();
+    fbMode = true;
+  }
+} catch(e){ console.warn("Firebase init failed", e); fbMode=false; }
+
+// ---------- Helpers ----------
+const $ = id => document.getElementById(id);
+function show(screenId){ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active")); const s=$(screenId); if(s){s.classList.add("active"); window.scrollTo({top:0,behavior:"smooth"});} }
+function toast(msg,ms=2500){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),ms); }
+function fmt(n){ return Number(n).toLocaleString("es-AR"); }
+function now(){ return Date.now(); }
+function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
+function normName(s){ return (s||"").trim().toLowerCase().replace(/\s+/g," "); }
+function shuffle(arr,rng){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor((rng?rng():Math.random())*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function makeRng(seed){ let s=seed>>>0; return function(){ s+=0x6D2B79F5; let t=Math.imul(s^s>>>15,1|s); t^=t+Math.imul(t^t>>>7,61|t); return ((t^t>>>14)>>>0)/4294967296; }; }
+function hashStr(s){ let h=2166136261>>>0; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return h>>>0; }
+
+// ---------- Global state ----------
+const STATE = {
+  tournament: null, // current tournament object
+  tournamentId: null,
+  role: "guest", // guest/student/teacher
+  team: null,
+  teams: [],
+  groups: [], // array of {id,name,teamIds}
+  matches: [], // all matches
+  standings: {}, // teamId -> stats
+  questions: [], // bank
+  enabledUnits: new Set(["U1","U2","U3","U4","INFO"]),
+  timerHandle: null,
+  currentMatch: null,
+  currentQIndex: 0,
+  matchAnswers: {}, // teamId -> {qIndex: answerIndex}
+  registrationTimer: null,
+  registrationCloseAt: null,
+};
+
+// ---------- Question bank (120+) ----------
+function buildQuestions(){
+  const Q=[];
+  let id=1;
+  const add=(unit,topic,diff,text,opts,correct,exp,points=3,time=60,type="mcq")=>{
+    Q.push({id:"q"+(id++),unit,topic,difficulty:diff,type,text,options:opts,correct,explanation:exp,points,time});
+  };
+  // UNIDAD 1
+  add("U1","Organizaciones","baja","¿Qué caracteriza a una organización con fines de lucro?",["Busca beneficio económico","No busca beneficio","Solo brinda servicios gratuitos","No tiene actividad económica"],0,"Las organizaciones con fines de lucro buscan obtener beneficio económico.");
+  add("U1","Necesidades","baja","Las necesidades primarias son:",["Alimentación, vivienda y vestimenta","Automóvil y viajes","Computadora y teléfono","Joyas y entretenimiento"],0,"Las necesidades primarias son esenciales para la vida.");
+  add("U1","Bienes","baja","Un bien libre es:",["El aire y la luz solar","Un automóvil","Una casa","Un libro"],0,"Los bienes libres no tienen costo ni dueño (aire, luz solar).");
+  add("U1","Bienes","baja","Un bien económico es:",["Aquel que tiene un costo y un dueño","El aire","La luz solar","El agua de mar"],0,"Los bienes económicos requieren esfuerzo para obtenerse y tienen dueño.");
+  add("U1","Bienes","media","Los bienes de capital se destinan a:",["Producir otros bienes o servicios","Consumo inmediato","Venta directa al consumidor","Almacenamiento sin uso"],0,"Los bienes de capital se usan para producir (maquinaria, equipos).");
+  add("U1","Bienes","media","Los bienes de consumo son:",["Los que se destinan a satisfacer necesidades directamente","Maquinaria industrial"," Materias primas","Instalaciones"],0,"Los bienes de consumo se usan directamente.");
+  add("U1","Factores","media","Los factores de producción son:",["Tierra, trabajo, capital y tecnología","Dinero y tiempo","Materias primas y energía","Trabajo y esfuerzo"],0,"Factores clásicos: tierra, trabajo, capital y tecnología.");
+  add("U1","Actividades","baja","La agricultura corresponde a la actividad:",["Primaria","Secundaria","Terciaria","Cuaternaria"],0,"Extraer recursos naturales es actividad primaria.");
+  add("U1","Actividades","baja","Una fábrica de muebles realiza actividad:",["Secundaria","Primaria","Terciaria","Cuaternaria"],0,"Transformar materias primas en productos es actividad secundaria.");
+  add("U1","Actividades","baja","Un supermercado realiza actividad:",["Terciaria","Primaria","Secundaria","Cuaternaria"],0,"Comercializar bienes es actividad terciaria.");
+  add("U1","Comerciante","media","El comerciante se caracteriza por:",["Habitualidad y fin de lucro","Actividad ocasional","Sin fin de lucro","Solo servicios gratuitos"],0,"Comerciante: habitualidad y fin de lucro.");
+  add("U1","Actos de comercio","media","Un acto de comercio es:",["Una operación mercantil habitual","Un acto personal"," Un acto civil","Una donación"],0,"Los actos de comercio son operaciones mercantiles.");
+  add("U1","SIC","media","El Sistema de Información Contable tiene entradas, procesos y:",["Salidas (informes)","Solo entradas"," Solo procesos","Ninguna"],2===1?0:0,"Las salidas son los informes y estados contables.");
+  // fix above: correct index for salidas is 0? options order: ["Salidas (informes)","Solo entradas","Solo procesos","Ninguna"] -> 0
+  add("U1","SIC","media","Las entradas del SIC son:",["Los documentos comerciales"," Los informes","Los asientos","Los balances"],0,"Las entradas son documentos que respaldan operaciones.");
+  add("U1","Operaciones","media","La compra es:",["La adquisición de bienes o servicios","La entrega de dinero","La venta"," El pago"],0,"Comprar es adquirir bienes o servicios.");
+  add("U1","Operaciones","media","El cobro es:",["Recibir dinero por una venta","Pagar una deuda","Comprar mercaderías","Registrar un asiento"],0,"Cobrar es recibir dinero.");
+  add("U1","Descuentos","baja","Importe del descuento = Precio × Porcentaje / 100. Si el precio es 1000 y el descuento 10%, el descuento es:",["100","10","900","1100"],0,"1000 × 10 / 100 = 100.");
+  add("U1","Descuentos","media","Precio final con descuento = Precio − Descuento. Precio 2000, descuento 15% (300). Precio final:",["1700","2300","300","1500"],0,"2000 − 300 = 1700.");
+  add("U1","Interés simple","media","Interés simple = Capital × Tasa × Tiempo. Capital 5000, tasa 0,05 (5%), tiempo 2. Interés:",["500","250","1000","50"],0,"5000 × 0,05 × 2 = 500.");
+  add("U1","Interés simple","media","Monto final = Capital + Interés. Capital 5000, interés 500. Monto final:",["5500","4500","500","10000"],0,"5000 + 500 = 5500.");
+  add("U1","Interés simple","alta","Capital 8000, tasa 10% anual, tiempo 3 años. Interés simple:",["2400","800","1600","3200"],0,"8000 × 0,10 × 3 = 2400.");
+  add("U1","Descuentos","alta","Precio 5000, descuento 20%. Precio final:",["4000","1000","6000","4500"],0,"Descuento 1000; final 4000.");
+  add("U1","Necesidades","baja","Las necesidades secundarias son:",["Automóvil, viajes, entretenimiento","Alimentación","Vivienda","Vestimenta"],0,"Secundarias: no esenciales para la vida.");
+  add("U1","Bienes","baja","El agua potable es un bien:",["Económico","Libre","De capital","De consumo"],0,"El agua potable tiene costo y dueño.");
+
+  // UNIDAD 2
+  add("U2","Facturas","media","La factura A se emite cuando:",["El comprador es responsable inscripto","El comprador es consumidor final","No hay IVA","Es una exportación"],0,"Factura A: entre responsables inscriptos.");
+  add("U2","Facturas","media","La factura B se emite a:",["Consumidores finales o monotributistas","Solo empresas grandes","Exportadores"," Organismos públicos"],0,"Factura B: consumidor final / monotributista.");
+  add("U2","Facturas","baja","La factura C se utiliza para:",["Monotributistas","Responsables inscriptos","Exportaciones","Importaciones"],0,"Factura C: monotributistas.");
+  add("U2","Remito","baja","El remito documenta:",["El traslado de mercaderías","El pago","La venta definitiva","El cobro"],0,"El remito respalda el traslado.");
+  add("U2","Recibo","baja","El recibo documenta:",["El pago o cobro de dinero","La venta de mercaderías","El traslado","La compra a crédito"],0,"El recibo respalda pagos/cobros.");
+  add("U2","Cheque","media","El cheque común se cobra:",["Al presentarlo al banco","En una fecha futura"," Solo en efectivo","Por transferencia"],0,"Cheque común: pago inmediato al presentar.");
+  add("U2","Cheque diferido","media","El cheque de pago diferido se cobra:",["En la fecha indicada"," Inmediatamente"," Solo en efectivo","Por tarjeta"],0,"Cheque diferido: fecha futura.");
+  add("U2","Cheque","media","El librador del cheque es:",["Quien emite el cheque","El banco","El beneficiario","El receptor"],0,"Librador = quien emite.");
+  add("U2","Cheque","media","El banco girado es:",["El banco donde se debita el cheque","El emisor","El receptor","El beneficiario"],0,"Banco girado = banco pagador.");
+  add("U2","Cheque","media","El beneficiario del cheque es:",["A quien se paga","Quien emite","El banco","El librador"],0,"Beneficiario = receptor del pago.");
+  add("U2","Pagaré","media","El pagaré es:",["Una promesa de pago","Una orden de pago"," Un documento de traslado","Una factura"],0,"Pagaré = promesa de pago.");
+  add("U2","Cheque","media","El cheque es:",["Una orden de pago","Una promesa de pago","Un remito","Un recibo"],0,"Cheque = orden de pago.");
+  add("U2","IVA","media","IVA = Precio neto × Alícuota / 100. Precio neto 1000, alícuota 21%. IVA:",["210","1210","1000","21"],0,"1000 × 21 / 100 = 210.");
+  add("U2","IVA","media","Precio final = Precio neto + IVA. Precio neto 1000, IVA 210. Precio final:",["1210","790","210","1000"],0,"1000 + 210 = 1210.");
+  add("U2","IVA","alta","Precio neto con IVA del 21% incluido = Precio final / 1,21. Precio final 1210. Precio neto:",["1000","210","1210","1464"],0,"1210 / 1,21 = 1000.");
+  add("U2","IVA","alta","IVA contenido = Precio final − Precio neto. Precio final 1210, neto 1000. IVA:",["210","1000","1210","1464"],0,"1210 − 1000 = 210.");
+  add("U2","IVA","media","Precio neto 5000, alícuota 21%. IVA:",["1050","6050","5000","21"],0,"5000 × 21/100 = 1050.");
+  add("U2","IVA","media","Precio neto 5000, IVA 1050. Precio final:",["6050","3950","1050","5000"],0,"5000 + 1050 = 6050.");
+  add("U2","Circuito","media","El circuito documental de una compraventa incluye:",["Factura, remito, recibo"," Solo factura"," Solo remito"," Solo recibo"],0,"Incluye varios documentos.");
+  add("U2","ARCA","baja","El organismo recaudador referido en el material es:",["ARCA","AFIP (denominación anterior)","BCRA","ANSes"],0,"Material de referencia: ARCA.");
+  add("U2","Datos factura","media","Un dato obligatorio de la factura es:",["Fecha de emisión","Color del papel"," Firma del cliente","Número de DNI del vendedor"],0,"Fecha de emisión es dato obligatorio.");
+  add("U2","IVA","alta","Si el IVA es 420 y la alícuota 21%, el precio neto es:",["2000","420","2420","1740"],0,"420 / 0,21 = 2000.");
+  add("U2","IVA","alta","Precio final 2420 con IVA 21% incluido. IVA contenido:",["420","2000","2420","2840"],0,"2420/1,21=2000; IVA=420.");
+  add("U2","Documentos","media","Los documentos sirven como:",["Respaldo de operaciones"," Solo para el fisco"," Solo internos"," Para el banco"],0,"Respaldo de las operaciones.");
+
+  // UNIDAD 3
+  add("U3","Patrimonio","baja","El patrimonio es:",["El conjunto de bienes, derechos y obligaciones"," Solo el dinero"," Solo las deudas"," Solo los bienes"],0,"Patrimonio = bienes + derechos − obligaciones.");
+  add("U3","Activo","baja","El Activo representa:",["Bienes y derechos","Obligaciones","Capital de los dueños","Ganancias"],0,"Activo = bienes y derechos.");
+  add("U3","Pasivo","baja","El Pasivo representa:",["Obligaciones o deudas","Bienes","Capital","Ganancias"],0,"Pasivo = obligaciones.");
+  add("U3","PN","baja","El Patrimonio Neto es:",["La diferencia entre Activo y Pasivo","Las deudas"," Los bienes"," Las ventas"],0,"PN = Activo − Pasivo.");
+  add("U3","Ecuación","media","Ecuación patrimonial estática: Activo = Pasivo + ?",["Patrimonio Neto","Ventas","Gastos","Ingresos"],0,"Activo = Pasivo + PN.");
+  add("U3","Ecuación","media","Si Activo = 1000000 y Pasivo = 300000, el PN es:",["700000","1300000","300000","1000000"],0,"PN = 1000000 − 300000 = 700000.");
+  add("U3","Ecuación","media","Si Activo = 800000 y PN = 500000, el Pasivo es:",["300000","1300000","500000","800000"],0,"Pasivo = 800000 − 500000 = 300000.");
+  add("U3","Ecuación","media","Si Pasivo = 200000 y PN = 600000, el Activo es:",["800000","400000","600000","200000"],0,"Activo = 200000 + 600000 = 800000.");
+  add("U3","Ganancias","media","Una ganancia aumenta:",["El Patrimonio Neto","El Pasivo"," El Activo (solo)","Las deudas"],0,"La ganancia aumenta el PN.");
+  add("U3","Pérdidas","media","Una pérdida disminuye:",["El Patrimonio Neto","El Activo"," El Pasivo"," Las deudas"],0,"La pérdida disminuye el PN.");
+  add("U3","Partida doble","media","La partida doble exige que:",["Debe = Haber en cada asiento","Solo el Debe importa"," Solo el Haber importa","No haya igualdad"],0,"Debe y Haber deben ser iguales.");
+  add("U3","Variaciones","media","Los dueños aportan efectivo. ¿Qué ocurre?",["Aumenta Activo y PN","Aumenta Pasivo","Disminuye Activo","Aumenta Pasivo y PN"],0,"Caja (Activo) y Capital (PN) aumentan.");
+  add("U3","Variaciones","media","Se paga en efectivo una deuda. ¿Qué ocurre?",["Disminuye Activo y Pasivo","Aumenta Activo y Pasivo","Aumenta PN","Disminuye PN"],0,"Bajan Caja y la deuda.");
+  add("U3","Variaciones","media","Compra de mercaderías a crédito. ¿Qué ocurre?",["Aumenta Activo y Pasivo","Aumenta Activo y PN","Disminuye Activo","Disminuye PN"],0,"Mercaderías (Activo) y Proveedores (Pasivo).");
+  add("U3","Variaciones","media","Venta de mercaderías al contado. ¿Qué ocurre?",["Aumenta Activo y PN","Aumenta Pasivo","Disminuye Activo","No cambia nada"],0,"Caja (Activo) y resultado (PN).");
+  add("U3","Variaciones","media","Compra de mueble pagado en efectivo. ¿Qué ocurre?",["Cambia composición del Activo","Aumenta Activo total","Aumenta Pasivo","Aumenta PN"],0,"Aumenta Muebles y disminuye Caja.");
+  add("U3","Variaciones","media","Se recibe un préstamo bancario. ¿Qué ocurre?",["Aumenta Activo y Pasivo","Aumenta Activo y PN","Disminuye Activo","Disminuye PN"],0,"Ingresa dinero y nace la deuda.");
+  add("U3","Variaciones","media","Pago de sueldos en efectivo. ¿Qué ocurre?",["Disminuye Activo y PN","Aumenta Pasivo","Aumenta Activo","Aumenta PN"],0,"Sale Caja y se reconoce gasto.");
+  add("U3","Ecuación","alta","Activo 900000, Pasivo 250000. PN:",["650000","1150000","250000","900000"],0,"900000 − 250000 = 650000.");
+  add("U3","Ecuación","alta","Activo 1200000, PN 450000. Pasivo:",["750000","1650000","450000","1200000"],0,"1200000 − 450000 = 750000.");
+  add("U3","Ecuación","alta","Pasivo 320000, PN 580000. Activo:",["900000","260000","580000","320000"],0,"320000 + 580000 = 900000.");
+  add("U3","Debe/Haber","media","Las cuentas de Activo aumentan por:",["El Debe","El Haber","Ambos","Ninguno"],0,"Activo aumenta por el Debe.");
+  add("U3","Debe/Haber","media","Las cuentas de Pasivo aumentan por:",["El Haber","El Debe","Ambos","Ninguno"],0,"Pasivo aumenta por el Haber.");
+  add("U3","Debe/Haber","media","Las cuentas de PN aumentan por:",["El Haber","El Debe","Ambos","Ninguno"],0,"PN aumenta por el Haber.");
+
+  // UNIDAD 4
+  add("U4","Cuenta","baja","Una cuenta contable es:",["Un registro para agrupar movimientos de un concepto","Un comprobante de pago"," Una lista de empleados"," Un balance"],0,"La cuenta reúne movimientos.");
+  add("U4","Plan de cuentas","baja","El plan de cuentas sirve para:",["Ordenar y codificar las cuentas"," Reemplazar el Libro Diario"," Calcular solo el IVA"," Pagar impuestos"],0,"Listado ordenado de cuentas.");
+  add("U4","Libro Diario","baja","El Libro Diario registra:",["Operaciones en orden cronológico mediante asientos","Solo el saldo de Caja"," Solo el inventario"," Solo ventas"],0,"Registra operaciones cronológicas.");
+  add("U4","Asiento","baja","Cada registro de una operación en el Libro Diario se denomina:",["Asiento contable"," Presupuesto"," Remito"," Recibo"],0,"Asiento contable.");
+  add("U4","Debe/Haber","baja","El Debe y el Haber representan:",["Las dos columnas de registro","Dos tipos de factura"," Datos del cliente"," Fechas"],0,"Dos columnas de registro.");
+  add("U4","Clasificación","media","'Caja' es una cuenta de:",["Activo","Pasivo","Patrimonio Neto","Resultado"],0,"Caja es Activo.");
+  add("U4","Clasificación","media","'Proveedores' es una cuenta de:",["Pasivo","Activo","Patrimonio Neto","Resultado"],0,"Proveedores es Pasivo.");
+  add("U4","Clasificación","media","'Capital' es una cuenta de:",["Patrimonio Neto","Activo","Pasivo","Resultado"],0,"Capital es PN.");
+  add("U4","Clasificación","media","'Ventas' es una cuenta de:",["Resultado (ingreso)","Activo","Pasivo","Patrimonio Neto"],0,"Ventas es resultado positivo.");
+  add("U4","Clasificación","media","'Gastos de administración' es cuenta de:",["Resultado (gasto)","Activo","Pasivo","Patrimonio Neto"],0,"Gasto reduce PN.");
+  add("U4","Mayor","media","El Libro Mayor agrupa:",["Los movimientos por cuenta","Las operaciones cronológicas","Los documentos","Los balances"],0,"Mayor agrupa por cuenta.");
+  add("U4","Cuenta T","media","La cuenta T se usa para:",["Visualizar Debe y Haber de una cuenta","Registrar operaciones"," Hacer balances"," Calcular IVA"],0,"Cuenta T: visualización.");
+  add("U4","Mayorización","media","Mayorizar es:",["Trasladar asientos del Diario al Mayor"," Borrar el Diario"," Calcular impuestos"," Cerrar el ejercicio"],0,"Trasladar al Mayor.");
+  add("U4","Saldos","media","El saldo de una cuenta se calcula:",["Debe − Haber (o viceversa según naturaleza)"," Solo Debe"," Solo Haber"," Suma de ambos"],0,"Saldo = diferencia.");
+  add("U4","Balance","media","El Balance de Sumas y Saldos verifica:",["Igualdad entre Debe y Haber"," Solo activos"," Solo pasivos"," Solo PN"],0,"Verifica igualdad Debe/Haber.");
+  add("U4","Integración","media","La registración integra:",["Desde documentos hasta registros contables"," Solo documentos"," Solo registros"," Solo balances"],0,"De documentos a registros.");
+  add("U4","Uniformidad","media","Usar un plan de cuentas uniforme facilita:",["Identificación y clasificación"," Eliminar asientos"," No registrar operaciones"," Calcular IVA"],0,"Identificación y clasificación.");
+  add("U4","Errores","media","Duplicación en un asiento es:",["Repetir un movimiento"," Olvidar una operación"," Invertir Debe/Haber"," Clasificar mal"],0,"Repetir = duplicación.");
+  add("U4","Errores","media","Omisión es:",["No registrar una operación"," Repetir un movimiento"," Invertir columnas"," Clasificar mal"],0,"No registrar = omisión.");
+  add("U4","Debe/Haber","alta","Si una cuenta de Activo disminuye, se registra en:",["El Haber","El Debe","Ambos","Ninguno"],0,"Activo disminuye por el Haber.");
+  add("U4","Debe/Haber","alta","Si una cuenta de Pasivo disminuye, se registra en:",["El Debe","El Haber","Ambos","Ninguno"],0,"Pasivo disminuye por el Debe.");
+  add("U4","Asiento","media","Un asiento debe tener:",["Leyenda explicativa"," Solo importes"," Solo cuentas"," Ningún detalle"],0,"Leyenda de la operación.");
+  add("U4","Saldos","alta","Saldo inicial Caja 50000, cobros 20000, pagos 15000. Saldo final:",["55000","85000","35000","65000"],0,"50000+20000−15000=55000.");
+  add("U4","Libro Mayor","media","En el Libro Mayor se calcula:",["El saldo de cada cuenta"," El total de ventas"," El IVA"," El inventario"],0,"Saldo por cuenta.");
+
+  // INFORMATICA
+  add("INFO","Hardware","baja","El hardware es:",["La parte física de la computadora","Los programas","Los datos","Los usuarios"],0,"Hardware = parte física.");
+  add("INFO","Software","baja","El software es:",["Los programas y aplicaciones"," El teclado"," La pantalla"," El mouse"],0,"Software = programas.");
+  add("INFO","Historia","baja","La primera generación de computadoras usaba:",["Válvulas","Transistores","Circuitos integrados","Microprocesadores"],0,"1ra generación: válvulas.");
+  add("INFO","Word","media","Para insertar una imagen en Word se usa:",["Insertar > Imagen"," Formato > Fuente"," Diseño > Márgenes"," Revisar > Ortografía"],0,"Insertar > Imagen.");
+  add("INFO","Word","media","Los atajos Ctrl+C y Ctrl+V sirven para:",["Copiar y pegar"," Cortar y guardar"," Imprimir"," Deshacer"],0,"Copiar y pegar.");
+  add("INFO","Word","media","Para numerar páginas en Word:",["Insertar > Número de página"," Diseño > Columnas"," Formato > Párrafo"," Revisar > Comentarios"],0,"Insertar > Número de página.");
+  add("INFO","Word","media","Los encabezados en Word se configuran en:",["Insertar > Encabezado"," Diseño > Temas"," Formato > Estilos"," Revisar > Cambios"],0,"Insertar > Encabezado.");
+  add("INFO","Word","baja","Para cambiar el formato de fuente en Word:",["Inicio > Fuente"," Insertar > Formas"," Diseño > Página"," Revisar > Idioma"],0,"Inicio > Fuente.");
+  add("INFO","Word","media","Las normas APA se usan para:",["Citar y referenciar fuentes"," Formatear tablas"," Numerar páginas"," Insertar imágenes"],0,"Normas de citación.");
+  add("INFO","Excel","media","La función SUMA en Excel se escribe:",["=SUMA(A1:A10)"," =SUM(A1:A10)"," SUMA(A1:A10)"," A1+A10"],0,"=SUMA(rango).");
+  add("INFO","Excel","media","La función SI en Excel se usa para:",["Evaluar una condición y devolver valores"," Sumar celdas"," Promediar"," Contar"],0,"Función condicional.");
+  add("INFO","Excel","media","Para calcular un porcentaje en Excel:",["Multiplicar por el porcentaje"," Solo sumar"," Solo restar"," Dividir siempre por 100 sin multiplicar"],0,"Multiplicar por el porcentaje.");
+  add("INFO","Excel","media","El promedio se calcula con:",["=PROMEDIO(rango)"," =SUMA(rango)"," =MAX(rango)"," =MIN(rango)"],0,"=PROMEDIO.");
+  add("INFO","Excel","media","La función MAX devuelve:",["El valor máximo"," El mínimo"," La suma"," El promedio"],0,"Valor máximo.");
+  add("INFO","Excel","media","La función MIN devuelve:",["El valor mínimo"," El máximo"," La suma"," El promedio"],0,"Valor mínimo.");
+  add("INFO","Excel","media","Para formato moneda en Excel:",["Formato de celdas > Moneda"," Insertar > Gráfico"," Datos > Filtro"," Fórmulas > Calcular"],0,"Formato de celdas.");
+  add("INFO","Excel","media","Un plan de cuentas en Excel se organiza en:",["Columnas de código y nombre"," Solo una celda"," Gráficos"," Imágenes"],0,"Código y nombre.");
+  add("INFO","Excel","media","El Libro Diario en Excel se estructura con:",["Columnas Fecha, Cuenta, Debe, Haber"," Solo importes"," Solo fechas"," Solo cuentas"],0,"Fecha, cuenta, debe, haber.");
+  add("INFO","Excel","media","El cuadro de situación patrimonial muestra:",["Activo, Pasivo y PN"," Solo ventas"," Solo gastos"," Solo impuestos"],0,"A, P y PN.");
+  add("INFO","Excel","media","El Balance de Sumas y Saldos en Excel verifica:",["Igualdad Debe/Haber"," Solo totales"," Solo saldos"," Solo cuentas"],0,"Igualdad Debe/Haber.");
+  add("INFO","Word","media","Para crear tablas en Word:",["Insertar > Tabla"," Diseño > Columnas"," Formato > Bordes"," Revisar > Comentarios"],0,"Insertar > Tabla.");
+  add("INFO","Word","media","Para configurar márgenes en Word:",["Diseño > Márgenes"," Insertar > Formas"," Formato > Párrafo"," Revisar > Idioma"],0,"Diseño > Márgenes.");
+  add("INFO","Búsqueda","media","Al buscar información digital conviene:",["Verificar la fuente y la fecha"," Copiar sin citar"," Usar solo redes sociales"," Ignorar la autoría"],0,"Verificar fuente y fecha.");
+  add("INFO","Logotipo","media","Para insertar un logotipo en un documento comercial:",["Insertar > Imagen y ajustar tamaño"," Escribir el nombre"," Usar solo texto"," Imprimir sin logo"],0,"Insertar imagen.");
+  add("INFO","Excel","alta","Función SI anidada permite:",["Evaluar múltiples condiciones"," Sumar"," Promediar"," Contar"],0,"Múltiples condiciones.");
+  add("INFO","Excel","alta","Para fechas en Excel se puede usar:",["=HOY()"," =SUMA()"," =PROMEDIO()"," =MAX()"],0,"=HOY().");
+  return Q;
 }
-function send(points,pct,note){const detail=armarDetalle();ultimoEnvio={points, pct: pct, note: note, detail: detail, data: {[FIELDS.nombre]:student.nombre,[FIELDS.curso]:student.curso,[FIELDS.grupo]:student.grupo,[FIELDS.detalle]:detail+` | Total ${points}/60 | Nota ${note}/10`,[FIELDS.puntaje]:points,[FIELDS.total]:activities.length,[FIELDS.porcentaje]:pct.toFixed(1),[FIELDS.nota]:note.toFixed(1)}};try{sessionStorage.setItem("sic_eval",JSON.stringify({Nombre:student.nombre,Curso:student.curso,Grupo:student.grupo,Detalle:ultimoEnvio.data[FIELDS.detalle],Puntaje:points,Total:activities.length,Porcentaje:pct.toFixed(1),Nota:note.toFixed(1)}));}catch(e){}$("datosEnviados").textContent=Object.entries(ultimoEnvio.data).map(([k,v])=>k+"  =  "+v).join("\n");if(!APPS_SCRIPT_URL)mensajeEnvio("⏳ Enviando tus respuestas al formulario de Google...","#edf6ff");enviarAhora();}
-$("btnVerDatos").addEventListener("click",()=>{const p=$("datosEnviados");p.classList.toggle("hide");$("btnVerDatos").textContent=p.classList.contains("hide")?"Ver / copiar los datos que se enviaron":"Ocultar los datos";});
-$("btnReenviar").addEventListener("click",()=>{enviarAhora();});
-$("btnAbrirForm").addEventListener("click",e=>{if(!ultimoEnvio)return;e.preventDefault();window.open(urlPrecargada(),"_blank","noopener");});
-$("btnDescargar").addEventListener("click",()=>{if(!ultimoEnvio)return;const d=ultimoEnvio.data,txt=["ESCUELA N.º 4-151 · DR. BENITO MARIANETTI","Desafío Contable: del Patrimonio al Libro Diario","Evaluación interactiva SIC · AAP3 y AAP4","","Alumno: "+student.nombre,"Curso: "+student.curso,"Grupo: "+student.grupo,"","Puntaje obtenido: "+ultimoEnvio.points+"/"+activities.length,"Porcentaje: "+ultimoEnvio.pct.toFixed(1)+"%","Nota final: "+ultimoEnvio.note.toFixed(1)+"/10","","Detalle de respuestas:","(C = correcta, I = incorrecta)",ultimoEnvio.detail,""].join("\n");const b=new Blob([txt],{type:"text/plain;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="evaluacion_"+student.nombre.replace(/[^\w]+/g,"_")+".txt";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);});
+STATE.questions = buildQuestions();
 
+// ---------- Navigation wiring ----------
+document.querySelectorAll("#navHome").forEach?0:0;
+$("navHome").addEventListener("click",()=>show("home"));
+$("navJoin").addEventListener("click",()=>show("join"));
+$("navTeacher").addEventListener("click",()=>show("teacher"));
+$("btnIngresar").addEventListener("click",()=>show("join"));
+$("btnVerVivo").addEventListener("click",()=>show("home"));
+
+// ---------- Tournament engine (demo + firebase hooks) ----------
+// We implement a demo in-memory engine that simulates server state and uses BroadcastChannel for cross-tab sync.
+
+let bc = null;
+try{ bc = new BroadcastChannel("copa-contable-2026"); }catch(e){ bc=null; }
+function broadcast(msg){ if(bc) bc.postMessage(msg); }
+if(bc){ bc.onmessage = (ev)=>{ handleRemote(ev.data); }; }
+
+const DB = {
+  // In-memory store for demo mode
+  tournaments: {}, // id -> tournament
+};
+
+function createTournament(cfg){
+  const id = cfg.code || ("T"+Date.now());
+  const t = {
+    id,
+    name: cfg.name,
+    description: cfg.desc,
+    code: id,
+    maxTeams: cfg.maxTeams,
+    numGroups: cfg.numGroups || 0,
+    regMinutes: cfg.regMinutes,
+    qualifyPerGroup: cfg.qualifyPerGroup,
+    qPerMatch: cfg.qPerMatch,
+    qTime: cfg.qTime,
+    accessCode: cfg.accessCode || "",
+    status: "ESPERANDO INSCRIPCIONES",
+    createdAt: Date.now(),
+    registrationOpenAt: null,
+    registrationCloseAt: null,
+    teamIds: [],
+    groups: [],
+    matches: [],
+    drawSeed: null,
+    drawAt: null,
+    champion: null,
+    audit: [],
+  };
+  DB.tournaments[id]=t;
+  STATE.tournament = t;
+  STATE.tournamentId = id;
+  audit(t,"Sala creada");
+  fbSubscribe(t.id);
+  saveLocal();
+  return t;
+}
+
+function audit(t,action,detail=""){ t.audit.unshift({ts:Date.now(),action,detail}); if(t.audit.length>200) t.audit.pop(); }
+
+function saveLocal(){
+  try{ localStorage.setItem("copa_state", JSON.stringify({tournaments:DB.tournaments, last:STATE.tournamentId})); }catch(e){}
+  // Firebase sync (best-effort)
+  if(fbMode && db && STATE.tournament){
+    const t = DB.tournaments[STATE.tournament.id] || STATE.tournament;
+    try{
+      db.collection("tournaments").doc(t.id).set(JSON.parse(JSON.stringify(t))).catch(e=>console.warn("fb save",e));
+    }catch(e){ console.warn("fb save",e); }
+  }
+}
+function fbSubscribe(tid){
+  if(!fbMode || !db) return;
+  try{
+    db.collection("tournaments").doc(tid).onSnapshot(snap=>{
+      if(snap.exists){
+        const data = snap.data();
+        DB.tournaments[tid] = data;
+        if(STATE.tournamentId===tid){ STATE.tournament = data; refreshUI(); }
+      }
+    });
+  }catch(e){ console.warn("fb sub",e); }
+}
+function loadLocal(){
+  try{
+    const raw = localStorage.getItem("copa_state");
+    if(raw){ const o=JSON.parse(raw); DB.tournaments=o.tournaments||{}; if(o.last && DB.tournaments[o.last]){ STATE.tournament=DB.tournaments[o.last]; STATE.tournamentId=o.last; } }
+  }catch(e){}
+}
+loadLocal();
+
+// If firebase available, we'd use it; for this deliverable demo mode is default unless configured.
+// We'll still attempt to sync via broadcast.
+
+function handleRemote(msg){
+  if(!msg) return;
+  if(msg.type==="state" && msg.tournamentId===STATE.tournamentId){
+    // refresh from broadcast not full; instead reload local
+    loadLocal();
+    if(STATE.tournamentId && DB.tournaments[STATE.tournamentId]){
+      STATE.tournament = DB.tournaments[STATE.tournamentId];
+      refreshUI();
+    }
+  }
+  if(msg.type==="ping"){ /* ignore */ }
+}
+
+function refreshUI(){
+  const t = STATE.tournament;
+  if(!t){ updateHome(); return; }
+  $("homeEstado").textContent = t.status;
+  $("homeTeams").textContent = t.teamIds.length;
+  $("homeCap").textContent = t.maxTeams;
+  $("homeGroups").textContent = t.groups.length || "-";
+  $("homeCode").textContent = t.code;
+  $("homeShare").textContent = t.code + " (URL: " + location.href.split("?")[0] + "?sala=" + t.code + ")";
+  renderStandingsHome();
+  renderWaitingList();
+  renderTeacherRegList();
+  renderGroupsView();
+  renderBracketView();
+  updateCountdown();
+}
+
+function updateHome(){
+  const t = STATE.tournament;
+  if(!t){
+    $("homeEstado").textContent="Sin sala activa";
+    $("homeTeams").textContent="0";
+    $("homeCap").textContent="80";
+    $("homeGroups").textContent="-";
+    $("homeCode").textContent="-";
+    $("homeShare").textContent="-";
+    $("homeStandings").innerHTML="<p class='small'>Sin competición iniciada.</p>";
+    return;
+  }
+  refreshUI();
+}
+
+// ---------- Registration flow ----------
+$("joinBtn").addEventListener("click",async()=>{
+  const code = $("joinCode").value.trim();
+  const name = $("joinTeamName").value.trim();
+  const members = $("joinMembers").value.trim();
+  const access = $("joinAccess").value.trim();
+  if(!code){ toast("Ingresá el código de sala"); return; }
+  if(!name){ toast("Ingresá el nombre del equipo"); return; }
+  // find tournament
+  let t = DB.tournaments[code];
+  if(!t){
+    loadLocal();
+    t = DB.tournaments[code];
+  }
+  if(!t && fbMode && db){
+    try{
+      const snap = await db.collection("tournaments").doc(code).get();
+      if(snap.exists){ t = snap.data(); DB.tournaments[code]=t; }
+    }catch(e){ console.warn(e); }
+  }
+  if(!t){ toast("Sala no encontrada"); return; }
+  fbSubscribe(t.id);
+  if(t.accessCode && t.accessCode !== access){ toast("Código de acceso incorrecto"); return; }
+  if(t.status !== "INSCRIPCIÓN ABIERTA" && t.status !== "ESPERANDO INSCRIPCIONES"){
+    // allow if not closed? We'll allow registration only if open
+    if(t.status === "INSCRIPCIÓN CERRADA" || t.status.includes("SORTEO") || t.status === "TORNEO INICIADO"){
+      toast("Las inscripciones están cerradas"); return;
+    }
+  }
+  if(t.teamIds.length >= t.maxTeams){ toast("Capacidad máxima alcanzada"); return; }
+  // normalize name
+  const nrm = normName(name);
+  const dup = t.teamIds.some(tid => {
+    // find team object
+    const team = (STATE.teams||[]).find(x=>x.id===tid) || null;
+    return false;
+  });
+  // check duplicate by name in stored teams
+  // We store teams in t.teams array
+  if(!t.teams) t.teams=[];
+  const exists = t.teams.some(tm => normName(tm.name)===nrm);
+  if(exists){ toast("Ya existe un equipo con ese nombre"); return; }
+  // create team
+  const teamId = "team_"+uid();
+  const team = { id: teamId, name, normalizedName:nrm, members, tournamentId:t.id, createdAt:Date.now() };
+  t.teams.push(team);
+  t.teamIds.push(teamId);
+  audit(t, "Equipo registrado", name);
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  // set state
+  STATE.tournament = t;
+  STATE.tournamentId = t.id;
+  STATE.team = team;
+  STATE.role = "student";
+  try{ localStorage.setItem("copa_team", JSON.stringify({tournamentId:t.id, teamId:team.id})); }catch(e){}
+  $("waitingTeam").textContent = "Equipo: " + name;
+  show("waiting");
+  toast("Registro confirmado ✅");
+  refreshUI();
+  startWaitingCountdown(t);
+});
+
+function startWaitingCountdown(t){
+  if(STATE.registrationTimer) clearInterval(STATE.registrationTimer);
+  const update = ()=>{
+    const closeAt = t.registrationCloseAt;
+    let remaining = 0;
+    if(closeAt){ remaining = Math.max(0, Math.ceil((closeAt - Date.now())/1000)); }
+    const mm = String(Math.floor(remaining/60)).padStart(2,"0");
+    const ss = String(remaining%60).padStart(2,"0");
+    const el = $("waitingCountdown");
+    if(el) el.textContent = (closeAt? (mm+":"+ss) : "--:--");
+    // status text
+    const st = $("waitingStatus");
+    if(st){
+      if(!t.registrationOpenAt) st.textContent="ESPERANDO INSCRIPCIONES";
+      else if(remaining>120) st.textContent="INSCRIPCIÓN ABIERTA";
+      else if(remaining>0) st.textContent="CIERRE INMINENTE";
+      else st.textContent="INSCRIPCIÓN CERRADA";
+    }
+    $("waitingTeamsCount").textContent = t.teamIds.length;
+    const list = $("waitingTeams");
+    if(list){ list.innerHTML = (t.teams||[]).map(tm=>`<div class="teamchip" style="margin:4px 0">${tm.name}</div>`).join(""); }
+    // home
+    $("homeTeams").textContent = t.teamIds.length;
+  };
+  update();
+  STATE.registrationTimer = setInterval(update,1000);
+}
+
+// ---------- Teacher panel ----------
+$("teacherLogin").addEventListener("click",()=>{
+  const p = $("teacherPass").value;
+  if(p === TEACHER_PASSWORD){
+    $("teacherAuth").style.display="none";
+    $("teacherPanel").style.display="block";
+    STATE.role="teacher";
+    toast("Acceso docente concedido");
+    renderUnitToggles();
+    refreshUI();
+  } else {
+    $("teacherAuthMsg").textContent="Contraseña incorrecta";
+  }
+});
+
+function renderUnitToggles(){
+  const units = ["U1","U2","U3","U4","INFO"];
+  const labels = {"U1":"Unidad 1","U2":"Unidad 2","U3":"Unidad 3","U4":"Unidad 4","INFO":"Informática"};
+  $("unitToggles").innerHTML = units.map(u=>`<label style="display:inline-flex;align-items:center;gap:6px;margin:4px 8px 4px 0"><input type="checkbox" data-unit="${u}" ${STATE.enabledUnits.has(u)?"checked":""}> ${labels[u]}</label>`).join("");
+  $("unitToggles").querySelectorAll("input").forEach(cb=>{
+    cb.addEventListener("change",()=>{ if(cb.checked) STATE.enabledUnits.add(cb.dataset.unit); else STATE.enabledUnits.delete(cb.dataset.unit); });
+  });
+}
+
+$("createRoom").addEventListener("click",()=>{
+  const cfg = {
+    name: $("cfgName").value.trim() || "COPA CONTABLE 2026",
+    desc: $("cfgDesc").value.trim(),
+    code: $("cfgCode").value.trim() || ("SALA"+Date.now().toString().slice(-4)),
+    maxTeams: Math.min(80, Math.max(2, parseInt($("cfgMax").value)||80)),
+    numGroups: parseInt($("cfgGroups").value)||0,
+    regMinutes: parseInt($("cfgRegMin").value)||10,
+    qualifyPerGroup: parseInt($("cfgQualify").value)||2,
+    qPerMatch: parseInt($("cfgQPerMatch").value)||5,
+    qTime: parseInt($("cfgQTime").value)||60,
+    accessCode: $("cfgAccess").value.trim(),
+  };
+  const t = createTournament(cfg);
+  $("tStatus").textContent = t.status;
+  toast("Sala creada: " + t.code);
+  refreshUI();
+});
+
+$("startReg").addEventListener("click",()=>{
+  const t = STATE.tournament;
+  if(!t){ toast("Creá una sala primero"); return; }
+  const mins = t.regMinutes || 10;
+  t.registrationOpenAt = Date.now();
+  t.registrationCloseAt = Date.now() + mins*60*1000;
+  t.status = "INSCRIPCIÓN ABIERTA";
+  audit(t,"Inscripción abierta", mins+" min");
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  // schedule auto close
+  setTimeout(()=>{ autoCloseRegistration(t.id); }, mins*60*1000);
+  refreshUI();
+  toast("Inscripción abierta por "+mins+" minutos");
+});
+
+function autoCloseRegistration(tid){
+  const t = DB.tournaments[tid];
+  if(!t) return;
+  if(t.status === "INSCRIPCIÓN CERRADA" || t.status.includes("SORTEO") || t.status === "TORNEO INICIADO") return;
+  closeRegistration(tid);
+}
+
+function closeRegistration(tid){
+  const t = DB.tournaments[tid];
+  if(!t) return;
+  if(t.status === "INSCRIPCIÓN CERRADA") return;
+  t.registrationCloseAt = t.registrationCloseAt || Date.now();
+  t.status = "INSCRIPCIÓN CERRADA";
+  audit(t,"Inscripción cerrada");
+  // freeze list
+  t.frozenTeamIds = [...t.teamIds];
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  refreshUI();
+  toast("Inscripción cerrada");
+}
+
+$("closeReg").addEventListener("click",()=>{ if(STATE.tournament) closeRegistration(STATE.tournament.id); });
+
+$("runDraw").addEventListener("click",()=>{ if(STATE.tournament) runDraw(STATE.tournament.id); });
+
+function runDraw(tid){
+  const t = DB.tournaments[tid];
+  if(!t) return;
+  if(!t.teamIds || t.teamIds.length === 0){ toast("No hay equipos registrados"); return; }
+  if(t.groups && t.groups.length>0){ toast("El sorteo ya se realizó"); return; }
+  // freeze
+  if(!t.frozenTeamIds) t.frozenTeamIds = [...t.teamIds];
+  const teamIds = [...t.frozenTeamIds];
+  // determine number of groups
+  let numGroups = t.numGroups;
+  if(!numGroups || numGroups<1){
+    const n = teamIds.length;
+    if(n <= 20) numGroups=1;
+    else if(n <= 40) numGroups=2;
+    else if(n <= 60) numGroups=3;
+    else numGroups=4;
+  }
+  // validate capacity
+  if(numGroups > 4) numGroups=4;
+  // shuffle using trusted RNG (server would do; here use crypto-ish)
+  const seed = Date.now() ^ Math.floor(Math.random()*1e9);
+  const rng = makeRng(hashStr(String(seed)+t.id));
+  const shuffled = shuffle(teamIds, rng);
+  // distribute
+  const groups = [];
+  const groupNames = ["A","B","C","D"];
+  for(let g=0; g<numGroups; g++){ groups.push({id:"g"+groupNames[g], name:"Grupo "+groupNames[g], teamIds:[]}); }
+  // balanced distribution: round-robin over shuffled
+  shuffled.forEach((tid,i)=>{ groups[i % numGroups].teamIds.push(tid); });
+  // ensure difference <=1 (round-robin guarantees)
+  t.groups = groups;
+  t.drawSeed = seed;
+  t.drawAt = Date.now();
+  t.status = "SORTEO EN PREPARACIÓN";
+  audit(t,"Sorteo realizado", numGroups+" grupos");
+  // animate
+  show("draw");
+  animateDraw(t, ()=>{
+    t.status = "TORNEO INICIADO";
+    saveLocal();
+    broadcast({type:"state",tournamentId:t.id});
+    refreshUI();
+    toast("Sorteo completado");
+  });
+}
+
+function animateDraw(t, cb){
+  const anim = $("drawAnim");
+  const res = $("drawResult");
+  const st = $("drawStatus");
+  let i=0;
+  const items = t.groups.flatMap(g=>g.teamIds.map(x=>({g:g.name,team:x})));
+  anim.innerHTML = "🎲";
+  st.textContent = "Mezclando equipos...";
+  const iv = setInterval(()=>{
+    anim.textContent = ["🎲","🏆","⚽","📊"][i%4];
+    anim.classList.add("pulse");
+    i++;
+    if(i>12){
+      clearInterval(iv);
+      anim.classList.remove("pulse");
+      // show groups
+      st.textContent = "Sorteo finalizado";
+      res.innerHTML = t.groups.map(g=>{
+        const names = g.teamIds.map(tid=> (t.teams.find(x=>x.id===tid)||{}).name || tid).join(", ");
+        return `<div class="card"><h3>${g.name}</h3><p>${names}</p></div>`;
+      }).join("");
+      setTimeout(cb, 800);
+    }
+  }, 120);
+}
+
+$("startGroupPhase").addEventListener("click",()=>{ if(STATE.tournament){ generateGroupMatches(STATE.tournament.id); STATE.tournament.status="Fase de grupos"; saveLocal(); broadcast({type:"state",tournamentId:STATE.tournament.id}); refreshUI(); toast("Fase de grupos iniciada"); } });
+
+function generateGroupMatches(tid){
+  const t = DB.tournaments[tid];
+  if(!t || !t.groups) return;
+  if(t.groupMatches && t.groupMatches.length>0) return;
+  t.groupMatches = [];
+  t.groups.forEach(g=>{
+    const ids = g.teamIds;
+    for(let i=0;i<ids.length;i++){
+      for(let j=i+1;j<ids.length;j++){
+        const qPerMatch = t.qPerMatch || 5;
+        const filtered = STATE.questions.filter(q=> STATE.enabledUnits.has(q.unit));
+        const qs = pickQuestions(filtered, qPerMatch, t);
+        const m = {
+          id: "gm_"+uid(),
+          roundLabel: "Fase de grupos · "+g.name,
+          groupId: g.id,
+          teamIds: [ids[i], ids[j]],
+          teamNames: [ (t.teams.find(x=>x.id===ids[i])||{}).name, (t.teams.find(x=>x.id===ids[j])||{}).name ],
+          questions: qs,
+          knockout: false,
+          status: "pending",
+        };
+        t.groupMatches.push(m);
+      }
+    }
+  });
+  if(!t.matches) t.matches=[];
+  t.matches.push(...t.groupMatches);
+}
+
+// ---------- Standings ----------
+function ensureStandings(t){
+  if(!t.standings) t.standings = {};
+  t.teamIds.forEach(tid=>{
+    if(!t.standings[tid]) t.standings[tid] = {played:0,won:0,draw:0,lost:0,points:0,correct:0,wrong:0,totalTime:0};
+  });
+}
+
+function renderStandingsHome(){
+  const t = STATE.tournament;
+  if(!t || !t.standings){ $("homeStandings").innerHTML="<p class='small'>Sin datos.</p>"; return; }
+  ensureStandings(t);
+  const rows = t.teamIds.map(tid=>{
+    const tm = (t.teams||[]).find(x=>x.id===tid)||{name:tid};
+    const s = t.standings[tid];
+    return {name:tm.name, ...s};
+  }).sort((a,b)=> b.points-a.points || b.correct-a.correct || a.totalTime-b.totalTime);
+  $("homeStandings").innerHTML = `<table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>Pts</th><th>Aciertos</th></tr></thead><tbody>`+
+    rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td>${r.played}</td><td>${r.won}</td><td>${r.draw}</td><td>${r.lost}</td><td><strong>${r.points}</strong></td><td>${r.correct}</td></tr>`).join("")+`</tbody></table>`;
+}
+
+function renderGroupsView(){
+  const t = STATE.tournament;
+  const container = $("groupsView");
+  if(!container) return;
+  if(!t || !t.groups || t.groups.length===0){ container.innerHTML="<p class='small'>Aún no hay grupos.</p>"; return; }
+  ensureStandings(t);
+  const matches = t.groupMatches || [];
+  container.innerHTML = t.groups.map(g=>{
+    const names = g.teamIds.map(tid=> (t.teams.find(x=>x.id===tid)||{}).name || tid).join(", ");
+    const gmatches = matches.filter(m=>m.groupId===g.id);
+    const mhtml = gmatches.map(m=>{
+      const played = !!m.result;
+      const score = played ? `${m.result.scores[m.teamIds[0]].points} - ${m.result.scores[m.teamIds[1]].points}` : "";
+      const winner = played ? (t.teams.find(x=>x.id===m.result.winner)||{}).name : "";
+      return `<div class="matchcard" style="margin-top:8px">
+        <span class="teamchip ${played && m.result.winner===m.teamIds[0]?'winner':''}">${m.teamNames[0]}</span>
+        <span>${played?score:"vs"}</span>
+        <span class="teamchip ${played && m.result.winner===m.teamIds[1]?'winner':''}">${m.teamNames[1]}</span>
+        ${played?`<span class="small">Ganador: ${winner}</span>`:`<button class="btn" style="padding:6px 10px" onclick="playMatch('${m.id}')">Jugar</button>`}
+      </div>`;
+    }).join("");
+    return `<div class="card"><h3>${g.name}</h3><p class="small">${names}</p>${mhtml}</div>`;
+  }).join("");
+}
+window.playMatch = function(mid){
+  const t = STATE.tournament;
+  if(!t) return;
+  const m = (t.groupMatches||[]).concat(t.matches||[]).find(x=>x.id===mid);
+  if(!m) return;
+  startMatch(m);
+};
+
+// ---------- Match engine ----------
+function startMatch(match){
+  STATE.currentMatch = match;
+  STATE.currentQIndex = 0;
+  STATE.matchAnswers = {};
+  (match.teamIds||[]).forEach(tid=> STATE.matchAnswers[tid]=[]);
+  show("match");
+  renderMatchQuestion();
+}
+
+function renderMatchQuestion(){
+  const m = STATE.currentMatch;
+  const t = STATE.tournament;
+  if(!m) return;
+  const qi = STATE.currentQIndex;
+  const qList = m.questions || [];
+  if(qi >= qList.length){
+    // finish match
+    finishMatch();
+    return;
+  }
+  const q = qList[qi];
+  $("matchRound").textContent = m.roundLabel || "Enfrentamiento";
+  $("matchTeams").textContent = (m.teamNames||[]).join(" vs ");
+  $("matchProgress").textContent = `Pregunta ${qi+1}/${qList.length}`;
+  const oldBtn = $("matchNextBtn"); if(oldBtn) oldBtn.remove();
+  $("matchQ").textContent = q.text;
+  $("matchScenario").textContent = q.topic ? ("Tema: "+q.topic+" · "+q.difficulty) : "";
+  const opts = $("matchOpts");
+  opts.innerHTML="";
+  q.options.forEach((v,i)=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="opt"; b.textContent=v;
+    b.addEventListener("click",()=>{
+      if(STATE.matchLocked) return;
+      [...opts.children].forEach(z=>z.classList.remove("selected"));
+      b.classList.add("selected");
+      STATE.selectedAnswer = i;
+      $("matchSubmit").disabled=false;
+    });
+    opts.appendChild(b);
+  });
+  STATE.selectedAnswer = null;
+  STATE.matchLocked = false;
+  $("matchSubmit").disabled=true;
+  $("matchFeedback").className="feedback hide";
+  // timer
+  startMatchTimer(t.qTime || 60);
+}
+
+let matchTimerHandle=null;
+function startMatchTimer(sec){
+  if(matchTimerHandle) clearInterval(matchTimerHandle);
+  let rem = sec;
+  const bar = $("matchTimerBar");
+  const lbl = $("matchTimer");
+  const update=()=>{ lbl.textContent=rem; bar.style.width = (rem/sec*100)+"%"; };
+  update();
+  matchTimerHandle = setInterval(()=>{
+    rem--;
+    update();
+    if(rem<=0){
+      clearInterval(matchTimerHandle);
+      // time up: auto submit no answer
+      handleMatchSubmit(true);
+    }
+  },1000);
+}
+
+$("matchSubmit").addEventListener("click",()=>handleMatchSubmit(false));
+function handleMatchSubmit(timeUp){
+  if(STATE.matchLocked) return;
+  STATE.matchLocked = true;
+  if(matchTimerHandle) clearInterval(matchTimerHandle);
+  const m = STATE.currentMatch;
+  const q = m.questions[STATE.currentQIndex];
+  const ans = timeUp ? null : STATE.selectedAnswer;
+  // record for current team (the viewer's team). In demo, we simulate both teams? 
+  // For simplicity, demo records only current user's team; teacher can simulate opponent.
+  const teamId = STATE.team ? STATE.team.id : (m.teamIds[0]);
+  if(!STATE.matchAnswers[teamId]) STATE.matchAnswers[teamId]=[];
+  STATE.matchAnswers[teamId][STATE.currentQIndex] = ans;
+  // evaluate
+  const correct = ans !== null && ans === q.correct;
+  const fb = $("matchFeedback");
+  fb.classList.remove("hide");
+  if(timeUp){
+    fb.className="feedback bad"; fb.textContent="Tiempo agotado. "+q.explanation;
+  } else if(correct){
+    fb.className="feedback good"; fb.textContent="¡Correcto! "+q.explanation;
+  } else {
+    fb.className="feedback bad"; fb.textContent="Incorrecto. "+q.explanation;
+  }
+  // disable options
+  [...$("matchOpts").children].forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.correct) b.classList.add("correct");
+    else if(i===STATE.selectedAnswer) b.classList.add("wrong");
+  });
+  $("matchSubmit").disabled=true;
+  // next button
+  let nb = $("matchNextBtn");
+  if(!nb){
+    nb = document.createElement("button");
+    nb.id="matchNextBtn"; nb.className="btn"; nb.textContent="Siguiente pregunta →";
+    nb.addEventListener("click",()=>{
+      nb.remove();
+      STATE.currentQIndex++;
+      renderMatchQuestion();
+    });
+    $("match").querySelector(".card").appendChild(nb);
+  }
+  nb.textContent = (STATE.currentQIndex === m.questions.length-1) ? "Ver resultado →" : "Siguiente pregunta →";
+}
+
+function finishMatch(){
+  const m = STATE.currentMatch;
+  const t = STATE.tournament;
+  // simulate opponent answers if missing (demo mode)
+  (m.teamIds||[]).forEach(tid=>{
+    if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[];
+    const arr = STATE.matchAnswers[tid];
+    // fill to length with random if missing
+    while(arr.length < m.questions.length){
+      const q = m.questions[arr.length];
+      arr.push(Math.random()<0.6 ? q.correct : Math.floor(Math.random()*q.options.length));
+    }
+    // replace null (time up) with random
+    arr.forEach((a,i)=>{
+      if(a===null || a===undefined){
+        const q=m.questions[i];
+        arr[i]=Math.random()<0.4 ? q.correct : Math.floor(Math.random()*q.options.length);
+      }
+    });
+  });
+  // compute scores per team
+  const scores = {};
+  (m.teamIds||[]).forEach(tid=>{
+    let pts=0, correct=0, wrong=0;
+    const ans = STATE.matchAnswers[tid] || [];
+    m.questions.forEach((q,i)=>{
+      const a = ans[i];
+      if(a === null || a === undefined){ /* no answer */ }
+      else if(a === q.correct){ pts += (q.points||3); correct++; }
+      else { wrong++; }
+    });
+    scores[tid] = {points:pts, correct, wrong};
+  });
+  // determine winner
+  const ids = m.teamIds;
+  let winner = null;
+  if(ids.length>=2){
+    if(scores[ids[0]].points > scores[ids[1]].points) winner=ids[0];
+    else if(scores[ids[1]].points > scores[ids[0]].points) winner=ids[1];
+    else {
+      // tie-break: more correct
+      if(scores[ids[0]].correct > scores[ids[1]].correct) winner=ids[0];
+      else if(scores[ids[1]].correct > scores[ids[0]].correct) winner=ids[1];
+      else winner = ids[0]; // fallback
+    }
+  }
+  m.result = {scores, winner};
+  // update standings
+  ensureStandings(t);
+  ids.forEach(tid=>{
+    const s = t.standings[tid];
+    const sc = scores[tid];
+    s.played++;
+    s.correct += sc.correct;
+    s.wrong += sc.wrong;
+    if(winner === tid){ s.won++; s.points += 3; }
+    else if(winner === null){ s.draw++; s.points += 1; }
+    else { s.lost++; }
+  });
+  // save match
+  if(!t.matches) t.matches=[];
+  t.matches.push(m);
+  audit(t, "Enfrentamiento finalizado", (m.teamNames||[]).join(" vs "));
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  // show result
+  show("result");
+  $("resultScore").textContent = `${scores[ids[0]].points} - ${scores[ids[1]].points}`;
+  $("resultWinner").textContent = winner ? ("Ganador: " + (t.teams.find(x=>x.id===winner)||{}).name) : "Empate";
+  $("resultDetail").innerHTML = ids.map(tid=> (t.teams.find(x=>x.id===tid)||{}).name + ": " + scores[tid].correct + " aciertos").join("<br>");
+  $("resultNext").onclick = ()=>{
+    // if knockout, advance
+    if(m.knockout){ advanceKnockoutAfterMatch(m, winner); }
+    else { show("standings"); refreshUI(); }
+  };
+}
+
+// ---------- Knockout generation ----------
+function generateKnockout(t){
+  ensureStandings(t);
+  // classify teams from groups
+  // sort each group by standings; take qualifyPerGroup top
+  const qualified = [];
+  if(t.groups && t.groups.length>0){
+    t.groups.forEach(g=>{
+      const sorted = g.teamIds.map(tid=>({tid, s:t.standings[tid]})).sort((a,b)=> b.s.points-a.s.points || b.s.correct-a.s.correct);
+      const q = t.qualifyPerGroup || 2;
+      sorted.slice(0,q).forEach(x=> qualified.push(x.tid));
+    });
+  } else {
+    // no groups: rank all teams
+    const sorted = t.teamIds.map(tid=>({tid,s:t.standings[tid]})).sort((a,b)=>b.s.points-a.s.points);
+    sorted.forEach(x=>qualified.push(x.tid));
+  }
+  // if need to reach power of 2, handle byes
+  // build rounds
+  t.knockout = { rounds: [], qualified };
+  // create first knockout round matches (round of 16/8/etc)
+  const roundSize = nextPow2(qualified.length);
+  const byes = roundSize - qualified.length;
+  // seeding: qualified in order; byes to top seeds
+  const seeds = [...qualified];
+  // pad with null byes at end? Simpler: top seeds get byes
+  const bracketTeams = [...seeds];
+  // create first round pairings: pair first with last etc.
+  const firstRound = [];
+  let i=0, j=bracketTeams.length-1;
+  // standard pairing
+  const pairs = [];
+  const arr = bracketTeams.slice();
+  // if byes, give to top seeds: remove top 'byes' teams as auto-advance
+  const autoAdvance = arr.slice(0, byes);
+  const rest = arr.slice(byes);
+  // pair rest
+  for(let k=0; k<rest.length/2; k++){
+    pairs.push([rest[k], rest[rest.length-1-k]]);
+  }
+  pairs.forEach((p, idx)=>{
+    firstRound.push(createKnockoutMatch(t, "Ronda preliminar", p, idx));
+  });
+  // auto-advance byes as virtual matches
+  autoAdvance.forEach((tid, idx)=>{
+    const m = createKnockoutMatch(t, "Pase libre", [tid, null], idx+1000);
+    m.result = {scores:{[tid]:{points:0,correct:0,wrong:0}}, winner: tid};
+    firstRound.unshift(m);
+  });
+  t.knockout.rounds.push({name: firstRound.length>8?"Ronda preliminar":"Octavos", matches: firstRound});
+  // store
+  if(!t.matches) t.matches=[];
+  t.matches.push(...firstRound);
+  saveLocal();
+  refreshUI();
+  show("bracket");
+}
+
+function nextPow2(n){ let p=1; while(p<n) p*=2; return p; }
+
+function createKnockoutMatch(t, roundName, teamPair, idx){
+  const qPerMatch = t.qPerMatch || 5;
+  const bank = STATE.questions.filter(q=> STATE.enabledUnits.has(q.unit? q.unit.split(" ")[0] : q.unit) || true);
+  // unit filter: questions have unit like "U1"; enabledUnits contains "U1" etc. Our questions unit field is "U1" string? We set unit "U1" yes.
+  const filtered = STATE.questions.filter(q=> STATE.enabledUnits.has(q.unit));
+  const qs = pickQuestions(filtered, qPerMatch, t);
+  const names = teamPair.map(tid=> tid ? (t.teams.find(x=>x.id===tid)||{}).name : "BYE");
+  const m = {
+    id: "m_"+uid(),
+    roundLabel: roundName,
+    teamIds: teamPair.filter(Boolean),
+    teamNames: names,
+    questions: qs,
+    knockout: true,
+    status: "pending",
+  };
+  // if bye (one team null), auto win
+  if(teamPair[1] === null){
+    m.result = {scores:{[teamPair[0]]:{points:0,correct:0,wrong:0}}, winner: teamPair[0]};
+  }
+  return m;
+}
+
+function pickQuestions(bank, n, t){
+  const pool = bank.slice();
+  const chosen = [];
+  const used = new Set();
+  while(chosen.length < n && pool.length>0){
+    const i = Math.floor(Math.random()*pool.length);
+    const q = pool.splice(i,1)[0];
+    if(used.has(q.id)) continue;
+    used.add(q.id);
+    // clone
+    chosen.push(JSON.parse(JSON.stringify(q)));
+  }
+  return chosen;
+}
+
+$("advanceKnockout").addEventListener("click",()=>{ if(STATE.tournament) advanceKnockout(STATE.tournament.id); });
+
+function advanceKnockout(tid){
+  const t = DB.tournaments[tid];
+  if(!t || !t.knockout){ 
+    // generate if not exists
+    generateKnockout(t);
+    return;
+  }
+  const kr = t.knockout;
+  const lastRound = kr.rounds[kr.rounds.length-1];
+  // check all matches have results
+  const pending = lastRound.matches.filter(m=>!m.result);
+  if(pending.length>0){
+    // start first pending match
+    startMatch(pending[0]);
+    return;
+  }
+  // collect winners
+  const winners = lastRound.matches.map(m=> m.result.winner).filter(Boolean);
+  if(winners.length <= 1){
+    // champion
+    t.champion = winners[0];
+    t.status = "FINALIZADO";
+    audit(t,"Campeón proclamado", (t.teams.find(x=>x.id===t.champion)||{}).name);
+    saveLocal();
+    broadcast({type:"state",tournamentId:t.id});
+    showPodium(t);
+    return;
+  }
+  // create next round
+  const roundName = winners.length===2 ? "Final" : (winners.length===4 ? "Semifinales" : (winners.length===8 ? "Cuartos de final" : "Octavos"));
+  const pairs = [];
+  for(let k=0;k<winners.length/2;k++){
+    pairs.push([winners[k], winners[winners.length-1-k]]);
+  }
+  const newMatches = pairs.map((p,idx)=>createKnockoutMatch(t, roundName, p, idx));
+  newMatches.forEach(m=>{ if(!t.matches.includes(m)) t.matches.push(m); });
+  kr.rounds.push({name: roundName, matches: newMatches});
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  refreshUI();
+  // start first
+  startMatch(newMatches[0]);
+}
+
+function advanceKnockoutAfterMatch(m, winner){
+  // nothing special; refresh
+  saveLocal();
+  broadcast({type:"state",tournamentId:STATE.tournament.id});
+  refreshUI();
+  show("bracket");
+}
+
+function renderBracketView(){
+  const t = STATE.tournament;
+  const container = $("bracketView");
+  if(!container) return;
+  if(!t || !t.knockout){ container.innerHTML="<p class='small'>El cuadro se generará al clasificar.</p>"; return; }
+  container.innerHTML = t.knockout.rounds.map(r=>{
+    return `<div class="card"><h3>${r.name}</h3>` + r.matches.map(m=>{
+      const n0 = m.teamNames[0]||"-";
+      const n1 = m.teamNames[1]||"-";
+      const res = m.result ? ` → ${ (t.teams.find(x=>x.id===m.result.winner)||{}).name || m.result.winner }` : "";
+      return `<div class="matchcard"><span class="teamchip ${m.result&&m.result.winner===m.teamIds[0]?'winner':''}">${n0}</span><span>vs</span><span class="teamchip ${m.result&&m.result.winner===m.result.winner&&m.result.winner===m.teamIds[1]?'winner':''}">${n1}</span><span class="small">${res}</span></div>`;
+    }).join("") + `</div>`;
+  }).join("");
+  if(t.champion){ showPodium(t); }
+}
+
+function showPodium(t){
+  show("podium");
+  const name = (t.teams.find(x=>x.id===t.champion)||{}).name || t.champion;
+  $("podiumChampion").textContent = name;
+  // confetti
+  for(let i=0;i<40;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=["#d4af37","#fff","#22c55e","#3b82f6"][Math.floor(Math.random()*4)];
+    c.style.animationDelay=(Math.random()*1.5)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+  $("podiumList").innerHTML = `<p class="small">Campeón de la COPA CONTABLE 2026</p>`;
+}
+
+$("podiumHome").addEventListener("click",()=>show("home"));
+
+// ---------- Teacher: reset ----------
+$("resetRoom").addEventListener("click",()=>{
+  if(!confirm("¿Reiniciar el torneo? Se conservará el historial.")) return;
+  const t = STATE.tournament;
+  if(!t) return;
+  // archive
+  if(!DB.history) DB.history=[];
+  DB.history.push(JSON.parse(JSON.stringify(t)));
+  // reset in place
+  t.status="ESPERANDO INSCRIPCIONES";
+  t.teamIds=[]; t.teams=[]; t.groups=[]; t.matches=[]; t.standings={}; t.champion=null; t.registrationOpenAt=null; t.registrationCloseAt=null; t.frozenTeamIds=null; t.knockout=null;
+  audit(t,"Torneo reiniciado");
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  refreshUI();
+  toast("Torneo reiniciado");
+});
+
+// ---------- Export results CSV ----------
+$("exportResults").addEventListener("click",()=>{
+  const t = STATE.tournament;
+  if(!t){ toast("Sin sala"); return; }
+  ensureStandings(t);
+  const rows = [["Equipo","Jugados","Ganados","Empates","Perdidos","Puntos","Aciertos","Errores"]];
+  t.teamIds.forEach(tid=>{
+    const tm = t.teams.find(x=>x.id===tid)||{name:tid};
+    const s = t.standings[tid];
+    rows.push([tm.name,s.played,s.won,s.draw,s.lost,s.points,s.correct,s.wrong]);
+  });
+  const csv = rows.map(r=>r.join(";")).join("\n");
+  downloadFile("resultados_copa.csv", csv);
+});
+
+$("exportQuestions").addEventListener("click",()=>{
+  const blob = new Blob([JSON.stringify(STATE.questions,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="preguntas_copa.json"; a.click();
+});
+
+$("importQuestions").addEventListener("click",()=> $("importFile").click());
+$("importFile").addEventListener("change",(e)=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{ const arr=JSON.parse(r.result); if(Array.isArray(arr)){ STATE.questions=arr; $("qCount").textContent=arr.length; toast("Preguntas importadas: "+arr.length);} }catch(err){ toast("Error al importar"); } };
+  r.readAsText(f);
+});
+
+function downloadFile(name,content){
+  const b=new Blob([content],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+}
+
+// ---------- Question count display ----------
+function updateQCount(){ $("qCount").textContent = STATE.questions.length; }
+updateQCount();
+
+// ---------- Auto-close registration check ----------
+setInterval(()=>{
+  const t = STATE.tournament;
+  if(t && t.registrationCloseAt && t.status==="INSCRIPCIÓN ABIERTA" && Date.now() >= t.registrationCloseAt){
+    closeRegistration(t.id);
+  }
+  updateCountdown();
+},1000);
+
+function updateCountdown(){
+  const t = STATE.tournament;
+  if(!t || !t.registrationCloseAt){ 
+    const el=$("homeCountdown"); if(el) el.innerHTML="";
+    return;
+  }
+  const remaining = Math.max(0, Math.ceil((t.registrationCloseAt-Date.now())/1000));
+  const mm=String(Math.floor(remaining/60)).padStart(2,"0");
+  const ss=String(remaining%60).padStart(2,"0");
+  const el=$("homeCountdown");
+  if(el) el.innerHTML = `<div class="countdown">${mm}:${ss}</div><p class="small">${t.status}</p>`;
+}
+
+// ---------- URL sala param ----------
+const params = new URLSearchParams(location.search);
+const salaParam = params.get("sala");
+if(salaParam){ $("joinCode").value = salaParam; }
+
+// ---------- Teacher reg list render ----------
+function renderTeacherRegList(){
+  const t = STATE.tournament;
+  const el = $("tRegList");
+  if(!el) return;
+  if(!t){ el.innerHTML="<p class='small'>Sin sala.</p>"; return; }
+  $("tStatus").textContent = t.status;
+  $("tTeams").textContent = t.teamIds.length;
+  $("tClose").textContent = t.registrationCloseAt ? new Date(t.registrationCloseAt).toLocaleTimeString() : "-";
+  el.innerHTML = (t.teams||[]).map(tm=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)"><span>${tm.name}</span><button class="btn ghost" style="padding:4px 8px" onclick="blockTeam('${tm.id}')">Bloquear</button></div>`).join("") || "<p class='small'>Sin inscripciones.</p>";
+}
+window.blockTeam = function(tid){
+  const t = STATE.tournament;
+  if(!t) return;
+  t.teamIds = t.teamIds.filter(x=>x!==tid);
+  t.teams = t.teams.filter(x=>x.id!==tid);
+  audit(t,"Equipo bloqueado", tid);
+  saveLocal();
+  broadcast({type:"state",tournamentId:t.id});
+  refreshUI();
+};
+
+// ---------- History view ----------
+function renderHistory(){
+  const el = $("historyView");
+  if(!el) return;
+  const h = DB.history||[];
+  el.innerHTML = h.length? h.map((t,i)=>`<div class="card"><strong>${t.name}</strong> · ${t.code} · Campeón: ${(t.teams.find(x=>x.id===t.champion)||{}).name||"-"}</div>`).join("") : "<p class='small'>Sin historial.</p>";
+}
+setInterval(renderHistory,2000);
+
+// ---------- Retry ----------
+$("retryBtn").addEventListener("click",()=>{ show("home"); refreshUI(); });
+
+// ---------- Session recovery ----------
+try{
+  const raw = localStorage.getItem("copa_team");
+  if(raw){
+    const o = JSON.parse(raw);
+    const t = DB.tournaments[o.tournamentId];
+    if(t){
+      const tm = (t.teams||[]).find(x=>x.id===o.teamId);
+      if(tm){ STATE.tournament=t; STATE.tournamentId=o.tournamentId; STATE.team=tm; STATE.role="student"; fbSubscribe(t.id); startWaitingCountdown(t); }
+    }
+  }
+}catch(e){}
+// ---------- Init ----------
+updateHome();
+refreshUI();
+setInterval(refreshUI,2000);
+
+// expose for debugging
+window.COPA = {STATE,DB};
 </script>
 </body></html>
