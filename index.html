@@ -848,7 +848,7 @@ function renderUnitToggles(){
   });
 }
 
-$("createRoom").addEventListener("click",()=>{
+$("createRoom").addEventListener("click",async ()=>{
   const cfg = {
     name: $("cfgName").value.trim() || "COPA CONTABLE 2026",
     desc: $("cfgDesc").value.trim(),
@@ -863,7 +863,9 @@ $("createRoom").addEventListener("click",()=>{
   };
   const t = createTournament(cfg);
   $("tStatus").textContent = t.status;
-  toast("Sala creada: " + t.code);
+  toast("Guardando sala en Firebase...");
+  await saveLocal();
+  toast("Sala creada: " + t.code + (fbMode ? " (guardada en Firebase)" : " (modo demo)"));
   refreshUI();
 });
 
@@ -1105,7 +1107,8 @@ function startMatch(match){
 function renderMatchQuestion(){
   const m = STATE.currentMatch;
   const t = STATE.tournament;
-  if(!m) return;
+  if(!m){ console.warn("renderMatchQuestion: no currentMatch"); return; }
+  if(!m.questions || m.questions.length===0){ console.warn("renderMatchQuestion: no questions"); toast("Error: el enfrentamiento no tiene preguntas", 4000); return; }
   STATE.matchLocked = false;
   STATE.selectedAnswer = null;
   const qi = STATE.currentQIndex;
@@ -1241,7 +1244,9 @@ async function advanceMatchQuestion(){
       if(t.activeMatch){ t.activeMatch.qIndex = newQ; t.activeMatch.startedAt = Date.now(); }
       STATE.currentQIndex = newQ;
       m.answers = STATE.matchAnswers;
-      saveLocal();
+      console.log("advanceMatchQuestion: advancing to", newQ);
+      await saveLocal();
+      console.log("advanceMatchQuestion: saved");
       renderMatchQuestion();
       startMatchTimer(t.qTime||60);
     }
@@ -1782,6 +1787,40 @@ async function pollTournament(){
   finally{ _polling = false; }
 }
 setInterval(pollTournament, 5000);
+
+// Verificación rápida de partido activo (cada 1s) para redirigir a los alumnos
+async function checkActiveMatch(){
+  if(!fbMode || !db || !STATE.tournamentId) return;
+  try{
+    const snap = await db.collection("tournaments").doc(STATE.tournamentId).get();
+    if(!snap.exists) return;
+    const data = snap.data();
+    const am = data.activeMatch;
+    if(am && am.status === "playing"){
+      const m = (data.matches||[]).find(x=>x.id===am.matchId);
+      if(m){
+        if(!STATE.currentMatch || STATE.currentMatch.id !== m.id || STATE.currentQIndex !== am.qIndex){
+          console.log("checkActiveMatch: updating qIndex from", STATE.currentQIndex, "to", am.qIndex);
+          STATE.tournament = data;
+          DB.tournaments[STATE.tournamentId] = data;
+          STATE.currentMatch = m;
+          STATE.currentQIndex = am.qIndex;
+          STATE.matchAnswers = m.answers || {};
+          (m.teamIds||[]).forEach(tid=>{ if(!STATE.matchAnswers[tid]) STATE.matchAnswers[tid]=[]; });
+          STATE.isDriver = (am.driverUid === (auth && auth.currentUser ? auth.currentUser.uid : null));
+          show("match");
+          renderMatchQuestion();
+          const elapsed = Math.floor((Date.now() - am.startedAt)/1000);
+          const rem = Math.max(0, am.timePerQ - elapsed);
+          startMatchTimer(rem > 0 ? rem : am.timePerQ);
+        }
+      } else {
+        console.warn("checkActiveMatch: match not found", am.matchId);
+      }
+    }
+  }catch(e){ /* silencioso */ }
+}
+setInterval(checkActiveMatch, 1000);
 
 // expose for debugging
 window.COPA = {STATE,DB};
